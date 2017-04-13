@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="RPGHelper.Client.Views.ProfileView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RPGHelper.Client.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="480" d:DesignWidth="640">
+    <Grid Background="Red">
+
+        <StackPanel>
+            <TextBox Name="usernameBox" Text="{Binding User.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Separator/>
+            <TextBlock Text="{Binding User.Username}"/>
+            <Separator/>
+            <TextBox Name="passwordBox" Text="{Binding User.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Separator/>
+            <TextBlock Text="{Binding User.Password}"/>
+
+            <Button Content="Save Changes" Click="Button_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

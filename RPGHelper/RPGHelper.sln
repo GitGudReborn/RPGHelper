@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPGHelper.Client", "RPGHelper.Client\RPGHelper.Client.csproj", "{65263C51-6CDF-42F8-AF86-0E94D62C5EFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPGHelper.Data", "RPGHelper.Data\RPGHelper.Data.csproj", "{8BA53089-7F24-4134-8353-2C06D2B76F02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPGHelper.Models", "RPGHelper.Models\RPGHelper.Models.csproj", "{ABEAB6C8-0752-4820-BCD1-F5E1D239D0DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPGHelper.Services", "RPGHelper.Services\RPGHelper.Services.csproj", "{0C78461E-9AAE-4156-850D-29DC7DB41EA2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65263C51-6CDF-42F8-AF86-0E94D62C5EFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65263C51-6CDF-42F8-AF86-0E94D62C5EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65263C51-6CDF-42F8-AF86-0E94D62C5EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65263C51-6CDF-42F8-AF86-0E94D62C5EFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BA53089-7F24-4134-8353-2C06D2B76F02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BA53089-7F24-4134-8353-2C06D2B76F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BA53089-7F24-4134-8353-2C06D2B76F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BA53089-7F24-4134-8353-2C06D2B76F02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABEAB6C8-0752-4820-BCD1-F5E1D239D0DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABEAB6C8-0752-4820-BCD1-F5E1D239D0DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABEAB6C8-0752-4820-BCD1-F5E1D239D0DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABEAB6C8-0752-4820-BCD1-F5E1D239D0DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C78461E-9AAE-4156-850D-29DC7DB41EA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C78461E-9AAE-4156-850D-29DC7DB41EA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C78461E-9AAE-4156-850D-29DC7DB41EA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C78461E-9AAE-4156-850D-29DC7DB41EA2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
