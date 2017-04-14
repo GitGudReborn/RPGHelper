@@ -59,5 +59,21 @@ namespace RPGHelper.Client
                 SubmitBtn_Click(sender, e);
             }
         }
+
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Register_Click(object sender, RoutedEventArgs e)
+        {
+            var registerWindow = new Register();
+            registerWindow.ShowDialog();
+        }
     }
 }

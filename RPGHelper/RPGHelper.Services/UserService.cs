@@ -23,5 +23,28 @@ namespace RPGHelper.Services
 
             return user;
         }
+
+        public bool UserExists(string username)
+        {
+            using (var context = new RPGHelperContext())
+            {
+                return context.Users.Any(u => u.Username == username);
+            }
+        }
+
+        public void Register(string username, string password)
+        {
+            using (var context = new RPGHelperContext())
+            {
+                User user = new User
+                {
+                    Username = username,
+                    Password = password
+                };
+
+                context.Users.Add(user);
+                context.SaveChanges();
+            }
+        }
     }
 }

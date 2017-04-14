@@ -1,0 +1,61 @@
+﻿<Window x:Class="RPGHelper.Client.Register"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RPGHelper.Client"
+        mc:Ignorable="d"
+        Title="Register" Height="355" Width="355"
+        KeyDown="Window_KeyDown" Icon="Media/RPG_Icon.png" 
+        WindowStyle="None" AllowsTransparency="True"
+        BorderBrush="Transparent">
+    <Window.Background>
+        <ImageBrush ImageSource="Media/Black_Gold_Background_2.png"/>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.Column="1" Grid.Row="1">
+
+            <Grid>
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Label Padding="0" Grid.Row="0" Foreground="WhiteSmoke" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">Username</Label>
+                <TextBox Name="usernameBox" FontSize="15"  Grid.Row="1" PreviewKeyDown="usernameAndPasswordBox_KeyDown"/>
+                <Label Padding="0" Grid.Row="2" Foreground="WhiteSmoke" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">Password</Label>
+                <PasswordBox Name="passwordBox" FontSize="15"  Grid.Row="3" PreviewKeyDown="usernameAndPasswordBox_KeyDown"/>
+                <Label Padding="0" Grid.Row="4" Foreground="WhiteSmoke" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">Repeat Password</Label>
+                <PasswordBox Name="repeatpasswordBox" FontSize="15"  Grid.Row="5" PreviewKeyDown="usernameAndPasswordBox_KeyDown"/>
+
+                <Button Grid.Row="7" Margin="50,10,50,-10" Content="Register" Click="Register_Click"/>
+                <StatusBar Name="statusBar" HorizontalAlignment="Center" Height="23" Margin="0,4,0,0" Grid.Row="6" VerticalAlignment="Center" Width="213">
+                    <StatusBarItem HorizontalContentAlignment="Center">
+                        <TextBlock Name="statusText" VerticalAlignment="Center" TextAlignment="Center"></TextBlock>
+                    </StatusBarItem>
+                </StatusBar>
+            </Grid>
+        </DockPanel>
+        <Button Content="Cancel" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center" Click="Cancel_Click"/>
+    </Grid>
+</Window>

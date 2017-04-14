@@ -65,6 +65,9 @@
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="ObservableObject.cs" />
+    <Compile Include="Register.xaml.cs">
+      <DependentUpon>Register.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\HeroesViewModel.cs" />
     <Compile Include="ViewModels\ImportExportViewModel.cs" />
     <Compile Include="ViewModels\ItemsViewModel.cs" />
@@ -97,6 +100,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Register.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\HeroesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -154,6 +161,28 @@
       <Project>{0C78461E-9AAE-4156-850D-29DC7DB41EA2}</Project>
       <Name>RPGHelper.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\RPG_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\Black_Gold_Background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\button_close.png" />
+    <Resource Include="Media\minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\minimize2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\Black_Gold_Background_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Media\successSound.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
