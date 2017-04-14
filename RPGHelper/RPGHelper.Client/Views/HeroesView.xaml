@@ -7,6 +7,22 @@
              mc:Ignorable="d" 
              d:DesignHeight="480" d:DesignWidth="640">
     <Grid Background="Yellow">
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="44*"/>
+            <RowDefinition Height="373*"/>
+            <RowDefinition Height="63*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="25*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListView x:Name="HeroesList" FontSize="18" Grid.Row="1">
+
+        </ListView>
+
+        <Button x:Name="AddHero" Content="Add New Hero" FontSize="18" Click="AddHero_Click" Grid.Row="2"/>
+
+        <TextBlock x:Name="textBox" Text="All Heroes" Grid.Row="0" Grid.Column="0" FontSize="22" FontWeight="Bold" TextAlignment="Center" Background="Coral"/>
     </Grid>
 </UserControl>

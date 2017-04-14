@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using RPGHelper.Models;
 
 namespace RPGHelper.Client.Views
 {
@@ -23,6 +24,44 @@ namespace RPGHelper.Client.Views
         public HeroesView()
         {
             InitializeComponent();
+
+            var hero1 = new Hero()
+            {
+                Name = "Kunkka",
+                Gold = 2000m
+            };
+
+            var hero2 = new Hero()
+            {
+                Name = "Sven",
+                Gold = 2000m
+            };
+
+            var hero3 = new Hero()
+            {
+                Name = "Mirana",
+                Gold = 2000m
+            };
+
+            var heroes = new List<Hero>();
+
+            heroes.Add(hero1);
+            heroes.Add(hero2);
+            heroes.Add(hero3);
+
+            foreach (var hero in heroes)
+            {
+                var listHeroes = new ListViewItem();
+                listHeroes.Content = hero.Name;
+                HeroesList.Items.Add(listHeroes);
+            }
+
+            //HeroesList.Items.Add(heroes);
+        }
+
+        private void AddHero_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
