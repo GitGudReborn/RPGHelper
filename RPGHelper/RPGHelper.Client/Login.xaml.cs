@@ -1,4 +1,5 @@
-﻿using RPGHelper.Services;
+﻿using RPGHelper.Data;
+using RPGHelper.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace RPGHelper.Client
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             FocusManager.SetFocusedElement(this, usernameBox);
+            InitDB.InitiateDB();
         }
 
         private void SubmitBtn_Click(object sender, RoutedEventArgs e)

@@ -20,6 +20,42 @@ namespace RPGHelper.Data
         }
 
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Hero> Heroes { get; set; }
+        public virtual DbSet<HeroStats> HeroStatistics { get; set; }
+        public virtual DbSet<Item> Items { get; set; }
+        public virtual DbSet<ItemStats> ItemStatistics { get; set; }
+        public virtual DbSet<Minion> Minions { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Hero>()
+                .HasRequired(h => h.HeroStats)
+                .WithRequiredPrincipal(hs => hs.Hero);
+
+            modelBuilder.Entity<Item>()
+                .HasRequired(i => i.ItemStats)
+                .WithRequiredPrincipal(i => i.Item);
+
+            modelBuilder.Entity<Hero>()
+                .HasMany(h => h.Minions)
+                .WithMany(m => m.Owners)
+                .Map(m =>
+                {
+                    m.MapLeftKey("HeroId");
+                    m.MapRightKey("MinionId");
+                    m.ToTable("HeroesMinions");
+                });
+
+            modelBuilder.Entity<Hero>()
+                .HasMany(h => h.Items)
+                .WithMany(it => it.ItemOwners)
+                .Map(m =>
+                {
+                    m.MapLeftKey("HeroId");
+                    m.MapRightKey("ItemId");
+                    m.ToTable("HeroesItems");
+                });
+        }
     }
 
     //public class MyEntity

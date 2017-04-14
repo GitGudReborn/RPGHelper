@@ -7,22 +7,18 @@ using System.Threading.Tasks;
 
 namespace RPGHelper.Models
 {
-    public class User
+    public class ItemStats
     {
-        public User()
-        {
-            this.Heroes = new List<Hero>();
-        }
-
         [Key]
         public int Id { get; set; }
 
         [Required]
-        public string Username { get; set; }
+        public double Attack { get; set; }
 
         [Required]
-        public string Password { get; set; }
+        public double Defence { get; set; }
 
-        public virtual ICollection<Hero> Heroes { get; set; }
+        [Required]
+        public virtual Item Item { get; set; }
     }
 }
