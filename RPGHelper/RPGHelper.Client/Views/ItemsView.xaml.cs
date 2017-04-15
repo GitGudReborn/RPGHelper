@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using RPGHelper.Models;
+using RPGHelper.Services;
 
 namespace RPGHelper.Client.Views
 {
@@ -20,9 +22,12 @@ namespace RPGHelper.Client.Views
     /// </summary>
     public partial class ItemsView : UserControl
     {
+        private List<Item> items = new List<Item>();
         public ItemsView()
         {
             InitializeComponent();
+            items = ItemService.GetAllItems();
+            DataContext = items;
         }
 
         private void DetailsShow_Click(object sender, RoutedEventArgs e)

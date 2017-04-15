@@ -19,7 +19,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="Media/3DE_Parchment_2_bg_PB.png"/>
         </Grid.Background>
-        <Button Style="{StaticResource MyButtonStyle}" x:Name="Close" BorderBrush="Transparent" Click="Close_OnClick" HorizontalAlignment="Left" Margin="350,10,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="1.685,0.657">
+       <Button Style="{StaticResource MyButtonStyle}" x:Name="Close" BorderBrush="Transparent" Click="Close_OnClick" HorizontalAlignment="Left" Margin="350,10,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="1.685,0.657">
             <Button.Background>
                 <ImageBrush ImageSource="Media/close.png"/>
             </Button.Background>

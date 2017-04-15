@@ -28,5 +28,17 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="ColorText" TargetType="Label">
+            <Setter Property="Foreground" Value="Crimson"/>
+            <Setter Property="FontStyle" Value="Italic" />
+            <Setter Property="FontFamily" Value="/Media/#UnifrakturCook"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="FontTabs" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontStyle" Value="Italic" />
+            <Setter Property="FontFamily" Value="/Media/#UnifrakturCook" />
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
     </Application.Resources>
 </Application>
