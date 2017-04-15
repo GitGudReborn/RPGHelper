@@ -33,7 +33,12 @@ namespace RPGHelper.Data
             User seedUser3 = new User
             {
                 Username = "Jean",
-                Password = "123"
+                Password = "123",
+                Birthdate = new DateTime(1997,11,11),
+                FirstName = "Jean",
+                LastName = "Petrov",
+                Gender = Gender.Male,
+                Email = "narumcyt@gmail.com"
             };
 
             Hero seedHero1 = new Hero

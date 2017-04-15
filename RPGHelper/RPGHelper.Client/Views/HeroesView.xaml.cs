@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,7 @@ namespace RPGHelper.Client.Views
         public HeroesView()
         {
             InitializeComponent();
+            LoadData();
 
             //var hero1 = new Hero()
             //{
@@ -76,11 +78,39 @@ namespace RPGHelper.Client.Views
                 heroesList.Add(hero);
             }
 
-            this.DataContext = new List<Hero>(heroesList);
+            //this.DataContext = new List<Hero>(heroesList);
             //HeroesList.ItemsSource = heroesList;
         }
 
+        public void LoadData()
+        {
+            var context = new RPGHelperContext();
+            var user = AuthenticationService.GetCurrentUser();
+
+            this.DataContext = new ObservableCollection<Hero>
+                (
+                    context.Heroes
+                    //.Where(h => h.UserId == user.Id)
+                    .OrderBy(h => h.Name)
+                    .ToList()
+                );
+        }
+
         private void AddHero_Click(object sender, RoutedEventArgs e)
+        {
+            var context = new RPGHelperContext();
+
+            var newHero = new Hero
+            {
+                Name = "New Hero",
+                Gold = 0.00m
+            };
+
+            context.Heroes.Add(newHero);
+            ((ObservableCollection<Hero>)DataContext).Add(newHero);
+        }
+
+        private void EditHero_OnClick(object sender, RoutedEventArgs e)
         {
 
         }
