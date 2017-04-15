@@ -16,7 +16,12 @@ namespace RPGHelper.Data
             User seedUser1 = new User
             {
                 Username = "Stoyan",
-                Password = "123"
+                Password = "123",
+                Birthdate = new DateTime(1989,11,24),
+                FirstName = "Stoyan",
+                LastName = "Grigorov",
+                Gender = Gender.Male,
+                Email = "stoyan@test.bg"
             };
 
             User seedUser2 = new User

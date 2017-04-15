@@ -1,4 +1,5 @@
-﻿using RPGHelper.Client.ViewModels;
+﻿using Microsoft.Win32;
+using RPGHelper.Client.ViewModels;
 using RPGHelper.Data;
 using RPGHelper.Services;
 using System;
@@ -28,22 +29,31 @@ namespace RPGHelper.Client.Views
         public ProfileView()
         {
             InitializeComponent();
+
+            string imgName = AuthenticationService.GetCurrentUser().ImgPath;
+
+            BitmapImage profileImage = new BitmapImage();
+            profileImage.BeginInit();
+            profileImage.UriSource = new Uri($@"..\..\Media\ProfilePictures\{imgName}", UriKind.Relative);
+            profileImage.EndInit();
+
+            ProfilePic.Source = profileImage;
+            avatarPic.Source = profileImage;
+
+            
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OpenBtn_Click(object sender, RoutedEventArgs e)
         {
-            var currentUser = AuthenticationService.GetCurrentUser();
-
-
-            var user = _userService.GetUser(currentUser.Id, _context);
-
-            user.Username = usernameBox.Text;
-            user.Password = passwordBox.Text;
-
-            _context.SaveChanges();
-
-            AuthenticationService.Login(user.Username, user.Password);
-            MessageBox.Show("Changes saved to DB");
+            OpenFileDialog op = new OpenFileDialog();
+            op.Title = "Select a picture";
+            op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+              "Portable Network Graphic (*.png)|*.png";
+            if (op.ShowDialog() == true)
+            {
+                avatarPic.Source = new BitmapImage(new Uri(op.FileName));
+            }
         }
     }
 }

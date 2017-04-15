@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enum\Affiliation.cs" />
+    <Compile Include="Enum\Gender.cs" />
     <Compile Include="Enum\ItemType.cs" />
     <Compile Include="Enum\Rarity.cs" />
     <Compile Include="Enum\Slot.cs" />
