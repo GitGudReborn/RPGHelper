@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using RPGHelper.Data;
 using RPGHelper.Models;
+using RPGHelper.Services;
 
 namespace RPGHelper.Client.Views
 {
@@ -25,38 +27,57 @@ namespace RPGHelper.Client.Views
         {
             InitializeComponent();
 
-            var hero1 = new Hero()
-            {
-                Name = "Kunkka",
-                Gold = 2000m
-            };
+            //var hero1 = new Hero()
+            //{
+            //    Name = "Kunkka",
+            //    Gold = 2000m
+            //};
 
-            var hero2 = new Hero()
-            {
-                Name = "Sven",
-                Gold = 2000m
-            };
+            //var hero2 = new Hero()
+            //{
+            //    Name = "Sven",
+            //    Gold = 2000m
+            //};
 
-            var hero3 = new Hero()
-            {
-                Name = "Mirana",
-                Gold = 2000m
-            };
+            //var hero3 = new Hero()
+            //{
+            //    Name = "Mirana",
+            //    Gold = 2000m
+            //};
 
-            var heroes = new List<Hero>();
+            //var heroes = new List<Hero>();
 
-            heroes.Add(hero1);
-            heroes.Add(hero2);
-            heroes.Add(hero3);
+            //heroes.Add(hero1);
+            //heroes.Add(hero2);
+            //heroes.Add(hero3);
+
+            //foreach (var hero in heroes)
+            //{
+            //    var listHeroes = new ListViewItem();
+            //    listHeroes.Content = hero.Name;
+            //    HeroesList.Items.Add(listHeroes);
+            //}
+
+            //HeroesList.Items.Add(heroes);
+
+            var context = new RPGHelperContext();
+
+            var user = AuthenticationService.GetCurrentUser();
+
+            var heroes = context.Heroes
+                //.Where(h => h.UserId == user.Id)
+                .OrderBy(h => h.Name)
+                .ToList();
+
+            var heroesList = new List<Hero>();
 
             foreach (var hero in heroes)
             {
-                var listHeroes = new ListViewItem();
-                listHeroes.Content = hero.Name;
-                HeroesList.Items.Add(listHeroes);
+                heroesList.Add(hero);
             }
 
-            //HeroesList.Items.Add(heroes);
+            this.DataContext = new List<Hero>(heroesList);
+            //HeroesList.ItemsSource = heroesList;
         }
 
         private void AddHero_Click(object sender, RoutedEventArgs e)

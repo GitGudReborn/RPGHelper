@@ -207,6 +207,9 @@
     <Resource Include="Media\search.png" />
     <Resource Include="Media\shield-gold.png" />
     <Resource Include="Media\3DE_Parchment_2_bg_PB.png" />
+    <Resource Include="Media\Artanis_SC2_Head4.jpg" />
+    <Resource Include="Media\large-ribbon-gold-hi.png" />
+    <Resource Include="Media\ProfilePictures\anonymous-person.png" />
     <Content Include="Media\successSound.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

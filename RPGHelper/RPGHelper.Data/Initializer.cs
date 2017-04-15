@@ -16,7 +16,12 @@ namespace RPGHelper.Data
             User seedUser1 = new User
             {
                 Username = "Stoyan",
-                Password = "123"
+                Password = "123",
+                Birthdate = new DateTime(1989,11,24),
+                FirstName = "Stoyan",
+                LastName = "Grigorov",
+                Gender = Gender.Male,
+                Email = "stoyan@test.bg"
             };
 
             User seedUser2 = new User
@@ -33,37 +38,37 @@ namespace RPGHelper.Data
 
             Hero seedHero1 = new Hero
             {
-                Name = "Ivan",
+                Name = "Kunkka",
                 Gold = 1000m
             };
 
             Hero seedHero2 = new Hero
             {
-                Name = "Gosho",
+                Name = "Sven",
                 Gold = 1000m
             };
 
             Hero seedHero3 = new Hero
             {
-                Name = "Penko",
+                Name = "Mirana",
                 Gold = 1000m
             };
 
             Hero seedHero4 = new Hero
             {
-                Name = "Nencho",
+                Name = "Luna",
                 Gold = 1000m
             };
 
             Hero seedHero5 = new Hero
             {
-                Name = "Kamen",
+                Name = "Lich",
                 Gold = 1000m
             };
 
             Hero seedHero6 = new Hero
             {
-                Name = "Penka",
+                Name = "Axe",
                 Gold = 1000m
             };
 
@@ -71,55 +76,55 @@ namespace RPGHelper.Data
             HeroStats herostats1 = new HeroStats
             {
                 Hero = seedHero1,
-                AttackPower = 120,
-                Defence = 100,
-                Hp = 900,
-                Mana = 300,
+                AttackPower = 102,
+                Defence = 7,
+                Hp = 1404,
+                Mana = 507,
                 Affiliation = Affiliation.Dark
             };
             HeroStats herostats2 = new HeroStats
             {
                 Hero = seedHero2,
-                AttackPower = 120,
-                Defence = 100,
-                Hp = 900,
-                Mana = 300,
+                AttackPower = 104,
+                Defence = 9,
+                Hp = 1305,
+                Mana = 445,
                 Affiliation = Affiliation.Dark
             };
             HeroStats herostats3 = new HeroStats
             {
                 Hero = seedHero3,
-                AttackPower = 120,
-                Defence = 100,
-                Hp = 900,
-                Mana = 300,
+                AttackPower = 95,
+                Defence = 8,
+                Hp = 965,
+                Mana = 521,
                 Affiliation = Affiliation.Dark
             };
             HeroStats herostats4 = new HeroStats
             {
                 Hero = seedHero4,
-                AttackPower = 120,
-                Defence = 100,
-                Hp = 900,
-                Mana = 300,
+                AttackPower = 90,
+                Defence = 9,
+                Hp = 1020,
+                Mana = 545,
                 Affiliation = Affiliation.Dark
             };
             HeroStats herostats5 = new HeroStats
             {
                 Hero = seedHero5,
-                AttackPower = 120,
-                Defence = 100,
-                Hp = 900,
-                Mana = 300,
+                AttackPower = 97,
+                Defence = 5,
+                Hp = 904,
+                Mana = 826,
                 Affiliation = Affiliation.Dark
             };
             HeroStats herostats6 = new HeroStats
             {
                 Hero = seedHero6,
-                AttackPower = 120,
-                Defence = 100,
-                Hp = 900,
-                Mana = 300,
+                AttackPower = 88,
+                Defence = 6,
+                Hp = 1290,
+                Mana = 525,
                 Affiliation = Affiliation.Dark
             };
 
