@@ -6,7 +6,15 @@
              xmlns:local="clr-namespace:RPGHelper.Client.Views"
              mc:Ignorable="d" 
              d:DesignHeight="480" d:DesignWidth="640">
-    <Grid Background="Green">
-            
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/RPGHelper.Client;component/Media/index.jpg"/>
+        </Grid.Background>
+        <Button Style="{StaticResource MyButtonStyle}" x:Name="Details" Width="30" Height="30" Click="DetailsShow_Click" BorderBrush="Transparent">
+            <Button.Background>
+                <ImageBrush ImageSource="/RPGHelper.Client;component/Media/info.png"/>
+            </Button.Background>
+        </Button>
+
     </Grid>
 </UserControl>

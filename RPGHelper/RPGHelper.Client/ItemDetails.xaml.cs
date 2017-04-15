@@ -10,25 +10,28 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace RPGHelper.Client.Views
+namespace RPGHelper.Client
 {
     /// <summary>
-    /// Interaction logic for ItemsView.xaml
+    /// Interaction logic for ItemDetails.xaml
     /// </summary>
-    public partial class ItemsView : UserControl
+    public partial class ItemDetails : Window
     {
-        public ItemsView()
+        public ItemDetails()
         {
             InitializeComponent();
         }
 
-        private void DetailsShow_Click(object sender, RoutedEventArgs e)
+        private void Move(object sender, MouseButtonEventArgs e)
         {
-            var details = new ItemDetails();
-            details.Show();
+            DragMove();
+        }
+
+        private void Close_OnClick(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

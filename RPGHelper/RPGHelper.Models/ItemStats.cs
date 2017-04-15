@@ -18,6 +18,8 @@ namespace RPGHelper.Models
         [Required]
         public double Defence { get; set; }
 
+        public int ItemId { get; set; }
+
         [Required]
         public virtual Item Item { get; set; }
     }

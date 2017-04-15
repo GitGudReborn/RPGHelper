@@ -37,6 +37,8 @@ namespace RPGHelper.Models
         [Required]
         public Slot Slot { get; set; }
 
+        public int ItemStatsId { get; set; }
+
         [Required]
         public virtual ItemStats ItemStats { get; set; }
 

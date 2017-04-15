@@ -61,6 +61,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ItemDetails.xaml.cs">
+      <DependentUpon>ItemDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -84,6 +87,10 @@
     <Compile Include="Views\ProfileView.xaml.cs">
       <DependentUpon>ProfileView.xaml</DependentUpon>
     </Compile>
+    <Page Include="ItemDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -182,6 +189,18 @@
     <Resource Include="Media\Black_Gold_Background_2.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Media\base-of-shield-logo-clip-art-at-clker-com-vector-clip-art-online-GynG8f-clipart.png" />
+    <Resource Include="Media\black-and-gold-wallpaper-iphone-1-background-wallpaper.jpg" />
+    <Resource Include="Media\black-close-button-png-2.png" />
+    <Resource Include="Media\close.png" />
+    <Resource Include="Media\index.jpg" />
+    <Resource Include="Media\info.png" />
+    <Resource Include="Media\magnifying-glass.png" />
+    <Resource Include="Media\minimize-icon-30.png" />
+    <Resource Include="Media\nsamor.jpg" />
+    <Resource Include="Media\search.png" />
+    <Resource Include="Media\shield-gold.png" />
+    <Resource Include="Media\3DE_Parchment_2_bg_PB.png" />
     <Content Include="Media\successSound.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

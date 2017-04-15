@@ -7,9 +7,9 @@
         xmlns:views="clr-namespace:RPGHelper.Client.Views"
         xmlns:viewModels="clr-namespace:RPGHelper.Client.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="480" Width="640">
+        Title="MainWindow" Height="480" Width="640" Icon="Media/RPG_Icon.png">
     <Window.Resources>
-        <DataTemplate x:Name="ProfileViewTemplate" DataType="{x:Type viewModels:ProfileViewModel}">
+       <DataTemplate x:Name="ProfileViewTemplate" DataType="{x:Type viewModels:ProfileViewModel}">
             <views:ProfileView DataContext="{Binding}"/>
         </DataTemplate>
         <DataTemplate x:Name="HeroesTemplate" DataType="{x:Type viewModels:HeroesViewModel}">

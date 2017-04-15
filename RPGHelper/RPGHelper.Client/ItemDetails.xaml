@@ -1,0 +1,30 @@
+﻿<Window x:Class="RPGHelper.Client.ItemDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RPGHelper.Client"
+        mc:Ignorable="d"
+        Title="ItemDetails" Height="400" Width="400" 
+        Icon="Media/RPG_Icon.png" WindowStyle="None" 
+        AllowsTransparency="True" WindowStartupLocation="CenterScreen"
+        BorderBrush="Transparent" Background="Transparent" Foreground="Transparent">
+    <Window.Resources>
+        
+    </Window.Resources>
+    <Grid MouseLeftButtonDown="Move">
+        <Grid.Effect>
+            <DropShadowEffect/>
+        </Grid.Effect>
+        <Grid.Background>
+            <ImageBrush ImageSource="Media/3DE_Parchment_2_bg_PB.png"/>
+        </Grid.Background>
+        <Button Style="{StaticResource MyButtonStyle}" x:Name="Close" BorderBrush="Transparent" Click="Close_OnClick" HorizontalAlignment="Left" Margin="350,10,0,0" VerticalAlignment="Top" Width="50" Height="50" RenderTransformOrigin="1.685,0.657">
+            <Button.Background>
+                <ImageBrush ImageSource="Media/close.png"/>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Window>
+    
