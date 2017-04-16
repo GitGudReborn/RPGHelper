@@ -23,7 +23,7 @@
            Stretch="Fill"
            VerticalAlignment="Stretch"
            HorizontalAlignment="Stretch"
-               />
+           Source="{Binding User.ImageSource}"/>
         </Border>
         <Label Grid.Column="0" Grid.Row="1"
                HorizontalAlignment="Center"
@@ -69,7 +69,8 @@
                 <Run Text="{Binding User.Birthdate, StringFormat=dd-MM-yyyy}"/>
             </TextBlock>
         </Grid>
-        <TabControl TabStripPlacement="Top" Grid.Column="1" HorizontalAlignment="Center" Height="385" Margin="10,10,0,0" VerticalAlignment="Top" Width="364" Grid.RowSpan="3">
+        <DockPanel Grid.Column="1" Grid.RowSpan="3">
+            <TabControl TabStripPlacement="Top" HorizontalAlignment="Stretch"  Margin="10,10,0,0" VerticalAlignment="Stretch">
             <TabItem Header="Statistics">
                 <Grid Background="DarkCyan"/>
             </TabItem>
@@ -90,18 +91,29 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button Content="Open" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="99" Height="30" Click="OpenBtn_Click"/>
-                    <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Stretch" Height="160" VerticalAlignment="Stretch" Width="160">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Border BorderBrush="Black"  Margin="0,10,0,10" Grid.Column="1" BorderThickness="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <Image Name="avatarPic"
            Stretch="Fill"
            VerticalAlignment="Stretch"
            HorizontalAlignment="Stretch"
                />
                     </Border>
-                    <Button Content="Change" Grid.Column="1" HorizontalAlignment="Left" Margin="11,113,0,0" VerticalAlignment="Top" Width="99" Height="30"/>
-                    <ProgressBar Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="10,148,0,0" VerticalAlignment="Top" Width="100"/>
-                    <RadioButton Content="Your own" GroupName="avatarSource" Grid.Column="1" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top"/>
-                    <RadioButton Content="Use stock" GroupName="avatarSource" Grid.Column="1" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top"/>
+                        </Grid>
+                    <Button Content="Open" Grid.Column="1" HorizontalAlignment="Stretch" Margin="10,10,10,0" VerticalAlignment="Top"  Height="30" Click="OpenBtn_Click"/>
+                    <Button Content="Change" Grid.Column="1" HorizontalAlignment="Stretch" Margin="10,115,10,0" VerticalAlignment="Top" Height="30" Click="Change_Click"/>
+                    <ProgressBar Grid.Column="1" HorizontalAlignment="Stretch" Height="20" Margin="10,150,10,0" VerticalAlignment="Top" />
+                    <RadioButton Name="rdoBtnOwn" IsChecked="True" Content="Your own" GroupName="avatarSource" Grid.Column="1" HorizontalAlignment="Stretch" Margin="10,63,10,0" VerticalAlignment="Top"/>
+                    <RadioButton Name="rdoBtnStock" Content="Use stock" GroupName="avatarSource" Grid.Column="1" HorizontalAlignment="Stretch" Margin="10,83,10,0" VerticalAlignment="Top"/>
 
                     <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
                         <Grid.RowDefinitions>
@@ -118,7 +130,7 @@
                         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="60" Grid.Row="0" VerticalAlignment="Top" Width="64"/>
                         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="60" Grid.Row="1" VerticalAlignment="Top" Width="64"/>
                         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="60" Grid.Row="2" VerticalAlignment="Top" Width="64"/>
-                        <RadioButton GroupName="stockAvatars" HorizontalAlignment="Left" Margin="69,23,0,0" Grid.Row="0" VerticalAlignment="Top"/>
+                        <RadioButton  IsChecked="True" GroupName="stockAvatars" HorizontalAlignment="Left" Margin="69,23,0,0" Grid.Row="0" VerticalAlignment="Top"/>
                         <RadioButton GroupName="stockAvatars" HorizontalAlignment="Left" Margin="69,23,0,0" Grid.Row="1" VerticalAlignment="Top"/>
                         <RadioButton GroupName="stockAvatars" HorizontalAlignment="Left" Margin="69,23,0,0" Grid.Row="2" VerticalAlignment="Top"/>
                         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="60" Grid.Column="1" Grid.Row="0" VerticalAlignment="Top" Width="64"/>
@@ -146,6 +158,7 @@
                 <Grid Background="DarkKhaki"/>
             </TabItem>
         </TabControl>
+        </DockPanel>
 
     </Grid>
 </UserControl>

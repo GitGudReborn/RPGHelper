@@ -29,6 +29,14 @@ namespace RPGHelper.Services
             }
         }
 
+        public static void Refresh()
+        {
+            using (var context = new RPGHelperContext())
+            {
+                loggedUser = context.Users.FirstOrDefault(u => u.Username.Equals(loggedUser.Username) && u.Password.Equals(loggedUser.Password));
+            }
+        }
+
         public static void Logout()
         {
             loggedUser = null;

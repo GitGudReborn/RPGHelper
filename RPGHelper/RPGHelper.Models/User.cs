@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace RPGHelper.Models
 {
@@ -35,6 +37,25 @@ namespace RPGHelper.Models
         public DateTime? Birthdate { get; set; }
 
         public string ImgPath { get; set; } = "anonymous-person.png";
+
+        [NotMapped]
+        public BitmapImage ImageSource { get; set; }
+        //public BitmapImage ImageSource
+        //{
+        //    get
+        //    {
+        //        var img = this.ImgPath;
+
+        //        if (this.ImgPath == null)
+        //        {
+        //            return new BitmapImage(new Uri($@"..\..\Media\ProfilePictures\anonymous-person.png", UriKind.Relative));
+        //        }
+        //        else
+        //        {
+        //            return new BitmapImage(new Uri($@"..\..\Media\ProfilePictures\{img}", UriKind.Relative));
+        //        }
+        //    }
+        //}
 
         public virtual ICollection<Hero> Heroes { get; set; }
     }

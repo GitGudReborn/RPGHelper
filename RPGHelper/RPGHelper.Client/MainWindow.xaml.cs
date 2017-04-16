@@ -3,6 +3,7 @@ using RPGHelper.Data;
 using RPGHelper.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,18 +30,38 @@ namespace RPGHelper.Client
             InitializeComponent();
 
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            var user = AuthenticationService.GetCurrentUser();
+
+            string path = Environment.CurrentDirectory;
+            string newPath = System.IO.Path.GetFullPath(System.IO.Path.Combine(path, $@"..\..\Media\ProfilePictures\{user.ImgPath ?? "anonymous-person.png"}"));
+
+            var uri = new Uri(newPath, UriKind.Absolute);
+
+            var image = new BitmapImage(uri);
+            user.ImageSource = image;
             var pvm = new ProfileViewModel()
             {
-                User = AuthenticationService.GetCurrentUser()
+                User = user
+
             };
             DataContext = pvm;           
         }
 
         private void ProfileBtn_Click(object sender, RoutedEventArgs e)
         {
+            var user = AuthenticationService.GetCurrentUser();
+
+            string path = Environment.CurrentDirectory;
+            string newPath = System.IO.Path.GetFullPath(System.IO.Path.Combine(path, $@"..\..\Media\ProfilePictures\{user.ImgPath ?? "anonymous-person.png"}"));
+
+            var uri = new Uri(newPath, UriKind.Absolute);
+
+            var image = new BitmapImage(uri);
+            user.ImageSource = image;
             var pvm = new ProfileViewModel()
             {
-                User = AuthenticationService.GetCurrentUser()
+                User = user
+
             };
             DataContext = pvm;
         }

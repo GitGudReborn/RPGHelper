@@ -4,6 +4,7 @@ using RPGHelper.Data;
 using RPGHelper.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,18 +30,6 @@ namespace RPGHelper.Client.Views
         public ProfileView()
         {
             InitializeComponent();
-
-            string imgName = AuthenticationService.GetCurrentUser().ImgPath;
-
-            BitmapImage profileImage = new BitmapImage();
-            profileImage.BeginInit();
-            profileImage.UriSource = new Uri($@"..\..\Media\ProfilePictures\{imgName}", UriKind.Relative);
-            profileImage.EndInit();
-
-            ProfilePic.Source = profileImage;
-            avatarPic.Source = profileImage;
-
-            
         }
 
         private void OpenBtn_Click(object sender, RoutedEventArgs e)
@@ -53,6 +42,56 @@ namespace RPGHelper.Client.Views
             if (op.ShowDialog() == true)
             {
                 avatarPic.Source = new BitmapImage(new Uri(op.FileName));
+            }
+        }
+
+        private void Change_Click(object sender, RoutedEventArgs e)
+        {
+            if (rdoBtnOwn.IsChecked == true)
+            {
+                if (avatarPic.Source != null)
+                {
+                    var imagePath = ((BitmapImage)avatarPic.Source).UriSource.AbsolutePath;
+
+                    imagePath = Uri.UnescapeDataString(imagePath);
+
+                    string extension = imagePath.Substring(imagePath.Length - 4).ToLower();
+
+                    if (extension == ".jpg" || extension == "jpeg")
+                    {
+                        var imageName = $"{Utilities.RandomString(10)}.jpg";
+                        using (var fileStream = new FileStream($@"..\..\Media\ProfilePictures\{imageName}", FileMode.Create))
+                        {
+                            BitmapEncoder encoder = new JpegBitmapEncoder();
+                            encoder.Frames.Add(BitmapFrame.Create(new Uri(imagePath, UriKind.Absolute)));
+                            encoder.Save(fileStream);
+
+                        }
+                        _userService.ChangeProfilePicture(imageName);
+                    }
+                    else if (extension == ".png")
+                    {
+                        var imageName = $"{Utilities.RandomString(10)}.PNG";
+                        using (var fileStream = new FileStream($@"..\..\Media\ProfilePictures\{imageName}", FileMode.Create))
+                        {
+                            BitmapEncoder encoder = new PngBitmapEncoder();
+                            encoder.Frames.Add(BitmapFrame.Create(new Uri(imagePath, UriKind.Absolute)));
+                            encoder.Save(fileStream);
+
+                        }
+                        _userService.ChangeProfilePicture(imageName);
+                    }
+                    ProfilePic.Source = avatarPic.Source;
+                    avatarPic.Source = null;
+                }
+                else
+                {
+                    MessageBox.Show("Image cannot be empty");
+                }
+            }
+            else
+            {
+
             }
         }
     }

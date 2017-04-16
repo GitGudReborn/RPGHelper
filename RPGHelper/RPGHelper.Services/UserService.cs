@@ -2,6 +2,7 @@
 using RPGHelper.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +45,33 @@ namespace RPGHelper.Services
 
                 context.Users.Add(user);
                 context.SaveChanges();
+            }
+        }
+
+        public void ChangeProfilePicture(string imageName)
+        {
+            using (var context = new RPGHelperContext())
+            {
+                var userId = AuthenticationService.GetCurrentUser().Id;
+
+                var user = context.Users.FirstOrDefault(u => u.Id == userId);
+
+                string oldImage = user.ImgPath;
+
+                if (oldImage != "anonymous-person.png")
+                {
+                    try
+                    {
+                        File.Delete($@"..\..\Media\ProfilePictures\{oldImage}");
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
+
+                user.ImgPath = imageName;
+                context.SaveChanges();
+                AuthenticationService.Refresh();
             }
         }
     }
