@@ -40,22 +40,6 @@ namespace RPGHelper.Models
 
         [NotMapped]
         public BitmapImage ImageSource { get; set; }
-        //public BitmapImage ImageSource
-        //{
-        //    get
-        //    {
-        //        var img = this.ImgPath;
-
-        //        if (this.ImgPath == null)
-        //        {
-        //            return new BitmapImage(new Uri($@"..\..\Media\ProfilePictures\anonymous-person.png", UriKind.Relative));
-        //        }
-        //        else
-        //        {
-        //            return new BitmapImage(new Uri($@"..\..\Media\ProfilePictures\{img}", UriKind.Relative));
-        //        }
-        //    }
-        //}
 
         public virtual ICollection<Hero> Heroes { get; set; }
     }
