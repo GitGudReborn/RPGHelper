@@ -142,9 +142,9 @@ namespace RPGHelper.Data
 
             Item seedItem1 = new Item
             {
-                Cost = 100m,
-                Name = "SeedItem1",
-                Description = "some magic item",
+                Cost = 6200m,
+                Name = "DIVINE RAPIER",
+                Description = "some dmg item",
                 ItemType = ItemType.Weapon,
                 Rarity = Rarity.Common,
                 Slot = Slot.Weapon
@@ -152,8 +152,8 @@ namespace RPGHelper.Data
 
             Item seedItem2 = new Item
             {
-                Cost = 100m,
-                Name = "SeedItem2",
+                Cost = 465m,
+                Name = "MAGIC WAND",
                 Description = "some magic item",
                 ItemType = ItemType.Weapon,
                 Rarity = Rarity.Common,
@@ -162,8 +162,8 @@ namespace RPGHelper.Data
 
             Item seedItem3 = new Item
             {
-                Cost = 100m,
-                Name = "SeedItem3",
+                Cost = 2720m,
+                Name = "DAGON",
                 Description = "some magic item",
                 ItemType = ItemType.Weapon,
                 Rarity = Rarity.Common,

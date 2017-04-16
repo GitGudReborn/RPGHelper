@@ -40,6 +40,17 @@
             <TextBlock Text="{Binding Path=HeroStats.AttackPower, StringFormat='AttackPower: {0}'}" FontFamily="arial, helvetica, sans-serif" FontSize="24" HorizontalAlignment="Left" Margin="20,0,0,0" Padding="20"></TextBlock>
 
             <TextBlock Text="{Binding Path=HeroStats.Defence, StringFormat='Defence: {0}'}" FontFamily="arial, helvetica, sans-serif" FontSize="24" HorizontalAlignment="Left" Margin="20,0,0,0" Padding="20"></TextBlock>
+
+            <ListView x:Name="test" FontSize="18" ItemsSource="{Binding Items}" IsSynchronizedWithCurrentItem="True">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+                        <GridViewColumn Header="Gold" DisplayMemberBinding="{Binding Cost}"></GridViewColumn>
+                        <GridViewColumn Header="Attack" DisplayMemberBinding="{Binding ItemStats.Attack}"></GridViewColumn>
+                        <GridViewColumn Header="Defence" DisplayMemberBinding="{Binding ItemStats.Defence}"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </StackPanel>
 
         <Button x:Name="AddHero" Content="Add New Hero" FontSize="18" Click="AddHero_Click" Grid.Row="2" />
