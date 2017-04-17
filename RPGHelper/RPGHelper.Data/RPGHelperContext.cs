@@ -55,6 +55,16 @@ namespace RPGHelper.Data
                     m.MapRightKey("ItemId");
                     m.ToTable("HeroesItems");
                 });
+
+            modelBuilder.Entity<User>()
+                 .HasMany(u => u.Friends)
+                 .WithMany()
+                 .Map(m =>
+                 {
+                     m.MapLeftKey("UserId");
+                     m.MapRightKey("FriendId");
+                     m.ToTable("UsersFriends");
+                 });
         }
     }
 

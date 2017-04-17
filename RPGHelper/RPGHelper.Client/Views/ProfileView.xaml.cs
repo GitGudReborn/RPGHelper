@@ -50,6 +50,8 @@ namespace RPGHelper.Client.Views
 
             passBox1.Password = AuthenticationService.GetCurrentUser().Password;
             passBox2.Password = passBox1.Password;
+
+            lvFriends.ItemsSource = _userService.GetFriends(AuthenticationService.GetCurrentUser().Id);
         }
 
         private void OpenBtn_Click(object sender, RoutedEventArgs e)

@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace RPGHelper.Services
 {
@@ -73,6 +74,14 @@ namespace RPGHelper.Services
                 user.ImgPath = imageName;
                 context.SaveChanges();
                 AuthenticationService.Refresh();
+            }
+        }
+
+        public IEnumerable GetFriends(int id)
+        {
+            using (var context = new RPGHelperContext())
+            {
+                return context.Users.FirstOrDefault(u => u.Id == id).Friends.ToList();
             }
         }
 

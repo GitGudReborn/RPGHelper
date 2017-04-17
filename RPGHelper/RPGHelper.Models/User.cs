@@ -15,6 +15,7 @@ namespace RPGHelper.Models
         public User()
         {
             this.Heroes = new List<Hero>();
+            this.Friends = new List<User>();
         }
 
         [Key]
@@ -28,11 +29,11 @@ namespace RPGHelper.Models
         [MaxLength(15)]
         public string Password { get; set; }
 
-        public string FirstName { get; set; } = "N/A";
+        public string FirstName { get; set; }
 
-        public string LastName { get; set; } = "N/A";
+        public string LastName { get; set; }
 
-        public string Email { get; set; } = "N/A";
+        public string Email { get; set; }
 
         public Gender Gender { get; set; } = Gender.NotSpecified;
 
@@ -43,6 +44,17 @@ namespace RPGHelper.Models
         [NotMapped]
         public BitmapImage ImageSource { get; set; }
 
+        [NotMapped]
+        public string Fullname
+        {
+            get
+            {
+                return $"{this.FirstName} {this.LastName}";
+            }
+        }
+
         public virtual ICollection<Hero> Heroes { get; set; }
+
+        public virtual ICollection<User> Friends { get; set; }
     }
 }

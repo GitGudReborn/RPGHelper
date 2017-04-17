@@ -246,6 +246,13 @@ namespace RPGHelper.Data
 
             context.Minions.Add(seedMinion1);
 
+
+            seedUser1.Friends.Add(seedUser2);
+            seedUser1.Friends.Add(seedUser3);
+            seedUser2.Friends.Add(seedUser1);
+
+
+
             context.Users.Add(seedUser1);
             context.Users.Add(seedUser2);
             context.Users.Add(seedUser3);
