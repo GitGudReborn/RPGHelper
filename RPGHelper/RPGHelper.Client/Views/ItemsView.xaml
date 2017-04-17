@@ -17,26 +17,58 @@
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="240"/>
         </Grid.ColumnDefinitions>
 
         <Label Content="Name" Grid.Row="0" Grid.Column="0" Style="{StaticResource ColorText}" />
         <Label Content="Price" Grid.Row="0" Grid.Column="1" Style="{StaticResource ColorText}"/>
         <Label Content="Type" Grid.Row="0" Grid.Column="2" Style="{StaticResource ColorText}"/>
         <Label Content="Actions" Grid.Row="0" Grid.Column="3" Style="{StaticResource ColorText}"/>
-        
-        
 
-
-        <Button Style="{StaticResource MyButtonStyle}" Grid.Row="2" x:Name="Details" Width="30" Height="30" Click="DetailsShow_Click" BorderBrush="Transparent">
-            <Button.Background>
-                <ImageBrush ImageSource="/RPGHelper.Client;component/Media/info.png"/>
-            </Button.Background>
-        </Button>
-        
-
+        <ListView Style="{StaticResource ListViewStyle}"
+                  ItemsSource="{Binding}"
+                  IsSynchronizedWithCurrentItem="True"
+                  Grid.Row="1"
+                  Grid.ColumnSpan="4"
+                  Grid.Column="0">
+            <ListView.Resources>
+                <Style TargetType="GridViewColumnHeader">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView >
+                    <GridViewColumn Width="120" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Width="120" DisplayMemberBinding="{Binding Cost}" />
+                    <GridViewColumn Width="120" DisplayMemberBinding="{Binding ItemType}" />
+                    <GridViewColumn Width="240">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <Button Style="{StaticResource MyButtonStyle}" x:Name="Details" DataContext="{Binding}" Width="30" Height="30" Click="DetailsShow_Click" BorderBrush="Transparent">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/RPGHelper.Client;component/Media/info.png"/>
+                                    </Button.Background>
+                                </Button>
+                                <Button Style="{StaticResource MyButtonStyle}" x:Name="Edit" DataContext="{Binding}" Width="40" Height="40" Click="EditDetails_Click" BorderBrush="Transparent">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/RPGHelper.Client;component/Media/edit.png"/>
+                                    </Button.Background>
+                                </Button>
+                                     <Button Style="{StaticResource MyButtonStyle}" x:Name="Delete" DataContext="{Binding}" Width="30" Height="30" Click="DeleteItem_Click" BorderBrush="Transparent">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/RPGHelper.Client;component/Media/close.png"/>
+                                    </Button.Background>
+                                </Button>
+                                </TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>

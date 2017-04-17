@@ -159,9 +159,11 @@
     <Resource Include="Media\ProfilePictures\stock11.png" />
     <Resource Include="Media\ProfilePictures\stock12.png" />
     <Content Include="Media\cancel.wav" />
+    <Resource Include="Media\edit.png" />
     <Content Include="Media\Spirax-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Media\TrashIt_icon_trnspt.png" />
     <Content Include="Media\UnifrakturCook-Bold.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -17,5 +17,30 @@ namespace RPGHelper.Services
                 return context.Items.ToList();
             }
         }
+
+        public static void Remove(Item item)
+        {
+            using (var context = new RPGHelperContext())
+            {
+                Item itemToRemove = context.Items.FirstOrDefault(i => i.Id == item.Id);
+                ItemStats itemStats = context.ItemStatistics.FirstOrDefault(st => st.ItemId == item.Id);
+
+                if (itemStats != null)
+                {
+                    context.ItemStatistics.Remove(itemStats);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    Console.WriteLine("gluposti");
+                }
+                if (itemToRemove != null)
+                {
+                    context.Items.Remove(itemToRemove);
+                    context.SaveChanges();
+                }
+            }
+        }
+
     }
 }
