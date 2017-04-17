@@ -49,24 +49,24 @@
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="1" FontSize="15" Margin="5,0,0,0">
                 <Run Text="First name:" FontWeight="DemiBold"/>
-                <Run Text="{Binding User.FirstName}"/>
+                <Run Name="firstNameRun" Text="{Binding User.FirstName}"/>
             </TextBlock>
 
             <TextBlock Grid.Row="2" FontSize="15" Margin="5,0,0,0">
                 <Run Text="Last name:" FontWeight="DemiBold"/>
-                <Run Text="{Binding User.LastName}"/>
+                <Run Name="lastNameRun" Text="{Binding User.LastName}"/>
             </TextBlock>
             <TextBlock Grid.Row="3" FontSize="15" Margin="5,0,0,0">
                 <Run Text="Email:" FontWeight="DemiBold"/>
-                <Run Text="{Binding User.Email}"/>
+                <Run Name="emailRun" Text="{Binding User.Email}"/>
             </TextBlock>
-            <TextBlock Grid.Row="4" FontSize="15" Margin="5,0,0,0">
+            <TextBlock Name="genderDetails" Grid.Row="4" FontSize="15" Margin="5,0,0,0">
                 <Run Text="Gender:" FontWeight="DemiBold"/>
-                <Run Text="{Binding User.Gender}"/>
+                <Run Name="genderRun" Text="{Binding User.Gender}"/>
             </TextBlock>
             <TextBlock Grid.Row="5" FontSize="15" Margin="5,0,0,0">
                 <Run Text="Birthday:" FontWeight="DemiBold"/>
-                <Run Text="{Binding User.Birthdate, StringFormat=dd-MM-yyyy}"/>
+                <Run Name="bdayRun" Text="{Binding User.Birthdate, StringFormat=dd-MM-yyyy}"/>
             </TextBlock>
         </Grid>
         <DockPanel Grid.Column="1" Grid.RowSpan="3">
@@ -178,7 +178,86 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Edit Profile">
-                <Grid Background="DarkKhaki"/>
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Margin="0,2,0,0" TextWrapping="Wrap" Text="First name:" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                        <TextBox Name="firstNameBox" Grid.Column="1" Margin="0,2,0,0" TextWrapping="Wrap" Text="{Binding User.FirstName, Mode=OneWay}" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Margin="0,10,0,0" TextWrapping="Wrap" Text="{Binding User.FirstName, Mode=OneWay}" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
+
+                        <TextBlock Grid.Column="0" Grid.Row="1" Margin="0,2,0,0" TextWrapping="Wrap" Text="Last name:" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                        <TextBox Name="lastNameBox" Grid.Column="1" Grid.Row="1" Margin="0,2,0,0" TextWrapping="Wrap" Text="{Binding User.LastName, Mode=OneWay}" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Grid.Row="1" Margin="0,10,0,0" TextWrapping="Wrap" Text="{Binding User.LastName, Mode=OneWay}" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
+
+                        <TextBlock Grid.Column="0" Grid.Row="2" Margin="0,2,0,0" TextWrapping="Wrap" Text="Email:" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                        <TextBox Name="emailBox" Grid.Column="1" Grid.Row="2" Margin="0,2,0,0" TextWrapping="Wrap" Text="{Binding User.Email, Mode=OneWay}" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Grid.Row="2" Margin="0,10,0,0" TextWrapping="Wrap" Text="{Binding User.Email, Mode=OneWay}" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
+
+                        <TextBlock Grid.Column="0" Grid.Row="3" Margin="0,2,0,0" TextWrapping="Wrap" Text="Gender:" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                        <ComboBox Name="genderComboBox" Grid.Column="1" Grid.Row="3" Margin="0,2,0,0"  VerticalAlignment="Top" HorizontalContentAlignment="Center">
+                            <ComboBoxItem Name="maleComboBoxItem">
+                                Male
+                            </ComboBoxItem>
+                            <ComboBoxItem Name="femaleComboBoxItem">
+                                Female
+                            </ComboBoxItem>
+                            <ComboBoxItem Name="notSpecComboBoxItem">
+                                Not specified
+                            </ComboBoxItem>
+                        </ComboBox>
+                        <TextBlock Grid.Column="1" Grid.Row="3" Margin="0,10,0,0" TextWrapping="Wrap" Text="{Binding User.Gender, Mode=OneWay}" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
+
+                        <TextBlock Grid.Column="0" Grid.Row="4" Margin="0,2,0,0" TextWrapping="Wrap" Text="Birthday" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                        <DatePicker Name="dateBox" SelectedDate="{Binding User.Birthdate, Mode=OneWay}" Grid.Column="1" Grid.Row="4" Margin="0,2,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Grid.Row="4" Margin="0,10,0,0" TextWrapping="Wrap" Text="{Binding User.Birthdate, StringFormat=dd-MM-yyyy}" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
+
+                        <TextBlock Grid.Column="0" Grid.Row="5" Grid.RowSpan="2" Margin="0,2,0,0" TextWrapping="Wrap" Text="Password:" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                        <PasswordBox Name="passBox1" Grid.Column="1" Grid.Row="5" Margin="0,2,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Grid.Row="5" Margin="0,10,0,0" TextWrapping="Wrap" Text="New password" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
+
+                        <PasswordBox Name="passBox2" Grid.Column="1" Grid.Row="6" Margin="0,2,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Grid.Row="6" Margin="0,10,0,0" TextWrapping="Wrap" Text="Confirm new password" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
+                        <Grid Grid.Row="7" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="10*"/>
+                            </Grid.ColumnDefinitions>
+                            <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,2,0,2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                <StatusBar HorizontalContentAlignment="Stretch">
+                                    <StatusBarItem HorizontalAlignment="Center">
+                                        <TextBlock Name="stsBarTextBlock" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </StatusBarItem>
+                                </StatusBar>
+                            </DockPanel>
+                            <Button Grid.Row="1" Grid.Column="0" Content="Save" Click="Btn_SaveProfileEdit"/>
+                            <Button Grid.Row="1" Grid.Column="2" Content="Cancel" Click="Btn_CancelProfileEdit"/>
+                        </Grid>
+                    </Grid>
             </TabItem>
         </TabControl>
         </DockPanel>

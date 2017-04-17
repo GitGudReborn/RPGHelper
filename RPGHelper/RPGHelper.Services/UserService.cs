@@ -1,5 +1,6 @@
 ﻿using RPGHelper.Data;
 using RPGHelper.Models;
+using RPGHelper.Models.Enum;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -72,6 +73,33 @@ namespace RPGHelper.Services
                 user.ImgPath = imageName;
                 context.SaveChanges();
                 AuthenticationService.Refresh();
+            }
+        }
+
+        public void EditProfile(string firstName, string lastName, string email, DateTime? date, string password, string genderValue)
+        {
+            using (var context = new RPGHelperContext())
+            {
+                int userId = AuthenticationService.GetCurrentUser().Id;
+
+                var user = context.Users.FirstOrDefault(u => u.Id == userId);
+
+                user.FirstName = firstName;
+                user.LastName = lastName;
+                user.Email = email;
+                user.Birthdate = date;
+                user.Password = password;
+
+                Gender gen = Gender.NotSpecified;
+
+                Enum.TryParse(genderValue, out gen);
+
+                user.Gender = gen;
+
+                context.SaveChanges();
+
+                AuthenticationService.Logout();
+                AuthenticationService.Login(user.Username, user.Password);
             }
         }
     }

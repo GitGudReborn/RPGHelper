@@ -158,6 +158,7 @@
     <Resource Include="Media\ProfilePictures\stock10.png" />
     <Resource Include="Media\ProfilePictures\stock11.png" />
     <Resource Include="Media\ProfilePictures\stock12.png" />
+    <Content Include="Media\cancel.wav" />
     <Content Include="Media\Spirax-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -31,6 +32,24 @@ namespace RPGHelper.Client.Views
         public ProfileView()
         {
             InitializeComponent();
+
+            string userGender = AuthenticationService.GetCurrentUser().Gender.ToString();
+
+            if (userGender == "Male")
+            {
+                maleComboBoxItem.IsSelected = true;
+            }
+            else if (userGender == "Female")
+            {
+                femaleComboBoxItem.IsSelected = true;
+            }
+            else
+            {
+                notSpecComboBoxItem.IsSelected = true;
+            }
+
+            passBox1.Password = AuthenticationService.GetCurrentUser().Password;
+            passBox2.Password = passBox1.Password;
         }
 
         private void OpenBtn_Click(object sender, RoutedEventArgs e)
@@ -188,6 +207,92 @@ namespace RPGHelper.Client.Views
 
             var image = new BitmapImage(uri);
             ProfilePic.Source = image;
+        }
+
+        private void Btn_SaveProfileEdit(object sender, RoutedEventArgs e)
+        {
+            stsBarTextBlock.Foreground = new SolidColorBrush(Colors.MediumVioletRed);
+            if (firstNameBox.Text == null || firstNameBox.Text.Length < 3 || firstNameBox.Text.Length > 40)
+            {
+                stsBarTextBlock.Text = "First name length allowed: 3-40!";
+                firstNameBox.Focus();
+                firstNameBox.SelectAll();
+                return;
+            }
+            if (lastNameBox.Text == null || lastNameBox.Text.Length < 3 || lastNameBox.Text.Length > 40)
+            {
+                stsBarTextBlock.Text = "Last name length allowed: 3-40!";
+                lastNameBox.Focus();
+                lastNameBox.SelectAll();
+                return;
+            }
+
+            if (emailBox.Text == null || emailBox.Text.Length < 7 || emailBox.Text.Length > 100)
+            {
+                stsBarTextBlock.Text = "Email not valid!";
+                emailBox.Focus();
+                emailBox.SelectAll();
+                return;
+            }
+
+            var date = dateBox.SelectedDate;
+            if (date == null)
+            {
+                stsBarTextBlock.Text = "Date not valid!";
+                dateBox.Focus();
+                return;
+            }
+
+            if (passBox1.Password != passBox2.Password)
+            {
+                stsBarTextBlock.Text = "Passwords don't match!";
+                passBox1.Focus();
+                passBox1.Password = "";
+                passBox2.Password = passBox1.Password;
+                return;
+            }
+
+            if (passBox1.Password.Length < 3 || passBox1.Password.Length > 15)
+            {
+                stsBarTextBlock.Text = "Password length allowed: 3-40!";
+                passBox1.Focus();
+                passBox1.Password = "";
+                passBox2.Password = passBox1.Password;
+                return;
+            }
+
+            string genderValue = (genderComboBox.SelectedItem as ComboBoxItem).Content.ToString();
+
+            _userService.EditProfile(firstNameBox.Text, lastNameBox.Text, emailBox.Text, date, passBox1.Password, genderValue);
+
+            bdayRun.Text = date.Value.ToString("dd-MM-yyyy");
+            firstNameRun.Text = firstNameBox.Text;
+            lastNameRun.Text = lastNameBox.Text;
+            emailRun.Text = emailBox.Text;
+            genderRun.Text = genderValue;
+
+            firstNameBox.Text = string.Empty;
+            lastNameBox.Text = string.Empty;
+            emailBox.Text = string.Empty;
+            passBox1.Password = string.Empty;
+            passBox2.Password = passBox1.Password;
+            SoundPlayer soundPlayer = new SoundPlayer(@"..\..\Media\successSound.wav");
+            soundPlayer.Play();
+            stsBarTextBlock.Foreground = new SolidColorBrush(Colors.Green);
+            stsBarTextBlock.Text = "Success!";
+        }
+
+        private void Btn_CancelProfileEdit(object sender, RoutedEventArgs e)
+        {
+            stsBarTextBlock.Foreground = new SolidColorBrush(Colors.Blue);
+            firstNameBox.Text = string.Empty;
+            lastNameBox.Text = string.Empty;
+            emailBox.Text = string.Empty;
+            passBox1.Password = string.Empty;
+            passBox2.Password = passBox1.Password;
+            SoundPlayer soundPlayer = new SoundPlayer(@"..\..\Media\cancel.wav");
+            soundPlayer.Play();
+            stsBarTextBlock.Text = "Canceled, all clear!";
         }
     }
 }

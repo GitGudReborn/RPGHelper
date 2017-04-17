@@ -24,6 +24,8 @@ namespace RPGHelper.Models
         public string Username { get; set; }
 
         [Required]
+        [MinLength(3)]
+        [MaxLength(15)]
         public string Password { get; set; }
 
         public string FirstName { get; set; } = "N/A";
