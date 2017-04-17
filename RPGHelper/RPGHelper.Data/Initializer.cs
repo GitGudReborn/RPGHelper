@@ -174,26 +174,23 @@ namespace RPGHelper.Data
             ItemStats itemStats1 = new ItemStats
             {
                 Attack = 10,
-                Defence = 11,
-                Item = seedItem1
+                Defence = 11
             };
             ItemStats itemStats2 = new ItemStats
             {
                 Attack = 11,
-                Defence = 12,
-                Item = seedItem2
+                Defence = 12
             };
             ItemStats itemStats3 = new ItemStats
             {
                 Attack = 12,
-                Defence = 13,
-                Item = seedItem3
+                Defence = 13
             };
 
             seedItem1.ItemStats = itemStats1;
             seedItem2.ItemStats = itemStats2;
             seedItem3.ItemStats = itemStats3;
-
+            
             Minion seedMinion1 = new Minion
             {
                 Name = "Doge",
@@ -253,6 +250,10 @@ namespace RPGHelper.Data
             context.Users.Add(seedUser2);
             context.Users.Add(seedUser3);
 
+            context.SaveChanges();
+            itemStats1.ItemId = seedItem1.Id;
+            itemStats2.ItemId = seedItem2.Id;
+            itemStats3.ItemId = seedItem3.Id;
             context.SaveChanges();
         }
     }
