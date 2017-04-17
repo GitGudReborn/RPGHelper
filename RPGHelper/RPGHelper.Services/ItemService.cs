@@ -23,7 +23,7 @@ namespace RPGHelper.Services
             using (var context = new RPGHelperContext())
             {
                 Item itemToRemove = context.Items.FirstOrDefault(i => i.Id == item.Id);
-                ItemStats itemStats = context.ItemStatistics.FirstOrDefault(st => st.ItemId == item.Id);
+                ItemStats itemStats = context.ItemStatistics.FirstOrDefault(st => st.Item.Id == item.Id);
 
                 if (itemStats != null)
                 {
@@ -42,5 +42,12 @@ namespace RPGHelper.Services
             }
         }
 
+        public static ItemStats GetItemStatsById(int id)
+        {
+            using (var context = new RPGHelperContext())
+            {
+                return context.ItemStatistics.FirstOrDefault(it => it.Item.Id == id);
+            }
+        }
     }
 }

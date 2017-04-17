@@ -45,5 +45,11 @@
             <Setter Property="FontFamily" Value="/Media/#Spirax" />
             <Setter Property="BorderBrush" Value="Transparent"/>
         </Style>
+        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="Foreground" Value="LightSlateGray"/>
+            <Setter Property="FontFamily" Value="/Media/#UnifrakturCook" />
+            <Setter Property="Margin" Value="5"/>
+        </Style>
     </Application.Resources>
 </Application>

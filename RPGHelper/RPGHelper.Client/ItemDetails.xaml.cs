@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using RPGHelper.Client.Views;
+using RPGHelper.Models;
 
 namespace RPGHelper.Client
 {
@@ -19,9 +21,12 @@ namespace RPGHelper.Client
     /// </summary>
     public partial class ItemDetails : Window
     {
+        private static Item currentItem = new Item();
         public ItemDetails()
         {
             InitializeComponent();
+            currentItem = ItemsView.GetCurrentItem();
+            DataContext = currentItem;
         }
 
         private void Move(object sender, MouseButtonEventArgs e)

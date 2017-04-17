@@ -23,7 +23,7 @@ namespace RPGHelper.Client.Views
     public partial class ItemsView : UserControl
     {
         private List<Item> items = new List<Item>();
-        private Item currentItem = new Item();
+        private static Item currentItem = new Item();
 
         public ItemsView()
         {
@@ -37,12 +37,13 @@ namespace RPGHelper.Client.Views
             var details = new ItemDetails();
             details.Show();
             Button b = sender as Button;
-            currentItem = (Item)b.DataContext;
-
+            currentItem = (Item)b.DataContext; 
+            currentItem.ItemStats = ItemService.GetItemStatsById(currentItem.Id);
         }
 
-        public Item GetCurrentItem()
+        public static Item GetCurrentItem()
         {
+            currentItem.ItemStats = ItemService.GetItemStatsById(currentItem.Id);
             return currentItem;
         }
 
