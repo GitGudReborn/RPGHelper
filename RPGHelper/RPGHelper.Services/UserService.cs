@@ -58,7 +58,7 @@ namespace RPGHelper.Services
 
                 string oldImage = user.ImgPath;
 
-                if (oldImage != "anonymous-person.png")
+                if (oldImage != "anonymous-person.png" && !oldImage.Contains("stock"))
                 {
                     try
                     {

@@ -146,6 +146,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Media\ProfilePictures\stock1.jpg" />
+    <Resource Include="Media\ProfilePictures\stock2.jpg" />
+    <Resource Include="Media\ProfilePictures\stock3.jpg" />
+    <Resource Include="Media\ProfilePictures\stock4.jpg" />
+    <Resource Include="Media\ProfilePictures\stock5.jpg" />
+    <Resource Include="Media\ProfilePictures\stock6.jpg" />
+    <Resource Include="Media\ProfilePictures\stock7.jpg" />
+    <Resource Include="Media\ProfilePictures\stock8.png" />
+    <Resource Include="Media\ProfilePictures\stock9.png" />
+    <Resource Include="Media\ProfilePictures\stock10.png" />
+    <Resource Include="Media\ProfilePictures\stock11.png" />
+    <Resource Include="Media\ProfilePictures\stock12.png" />
     <Content Include="Media\Spirax-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

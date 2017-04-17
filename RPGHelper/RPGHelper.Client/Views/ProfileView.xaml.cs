@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -91,8 +92,102 @@ namespace RPGHelper.Client.Views
             }
             else
             {
-
+                if (stock1.IsChecked == true)
+                {
+                    string img = "stock1.jpg";
+                    _userService.ChangeProfilePicture(img);
+                    UpdateProfilePic(img);
+                    return;
+                }
+                if (stock2.IsChecked == true)
+                {
+                    string img = "stock2.jpg";
+                    _userService.ChangeProfilePicture(img);
+                    UpdateProfilePic(img);
+                    return;
+                }
+                if (stock3.IsChecked == true)
+                {
+                    string img = "stock3.jpg";
+                    _userService.ChangeProfilePicture(img);
+                    UpdateProfilePic(img);
+                    return;
+                }
+                if (stock4.IsChecked == true)
+                {
+                    string img = "stock4.jpg";
+                    _userService.ChangeProfilePicture(img);
+                    UpdateProfilePic(img);
+                    return;
+                }
+                if (stock5.IsChecked == true)
+                {
+                    string img = "stock5.jpg";
+                    _userService.ChangeProfilePicture(img);
+                    UpdateProfilePic(img);
+                    return;
+                }
+                if (stock6.IsChecked == true)
+                {
+                    string img = "stock6.jpg";
+                    _userService.ChangeProfilePicture(img);
+                    UpdateProfilePic(img);
+                    return;
+                }
+                if (stock7.IsChecked == true)
+                {
+                    string img = "stock7.jpg";
+                    _userService.ChangeProfilePicture(img);
+                    UpdateProfilePic(img);
+                    return;
+                }
+                if (stock8.IsChecked == true)
+                {
+                    string img = "stock8.PNG";
+                    _userService.ChangeProfilePicture(img);
+                    UpdateProfilePic(img);
+                    return;
+                }
+                if (stock9.IsChecked == true)
+                {
+                    string img = "stock9.PNG";
+                    _userService.ChangeProfilePicture(img);
+                    UpdateProfilePic(img);
+                    return;
+                }
+                if (stock10.IsChecked == true)
+                {
+                    string img = "stock10.PNG";
+                    _userService.ChangeProfilePicture(img);
+                    UpdateProfilePic(img);
+                    return;
+                }
+                if (stock11.IsChecked == true)
+                {
+                    string img = "stock11.PNG";
+                    _userService.ChangeProfilePicture(img);
+                    UpdateProfilePic(img);
+                    return;
+                }
+                if (stock12.IsChecked == true)
+                {
+                    string img = "stock12.PNG";
+                    _userService.ChangeProfilePicture(img);
+                    UpdateProfilePic(img);
+                    return;
+                }
             }
+        }
+
+        private void UpdateProfilePic(string imgPath)
+        {
+            string path = Environment.CurrentDirectory;
+            string newPath = System.IO.Path.GetFullPath(System.IO.Path.Combine(path, $@"..\..\Media\ProfilePictures\{imgPath ?? "anonymous-person.png"}"));
+
+            var uri = new Uri(newPath, UriKind.Absolute);
+
+            var image = new BitmapImage(uri);
+            ProfilePic.Source = image;
         }
     }
 }
