@@ -249,11 +249,16 @@ namespace RPGHelper.Data
             context.Users.Add(seedUser1);
             context.Users.Add(seedUser2);
             context.Users.Add(seedUser3);
-
             context.SaveChanges();
+
             itemStats1.ItemId = seedItem1.Id;
             itemStats2.ItemId = seedItem2.Id;
             itemStats3.ItemId = seedItem3.Id;
+            context.SaveChanges();
+
+            seedItem1.ItemStatsId = itemStats1.Id;
+            seedItem2.ItemStatsId = itemStats2.Id;
+            seedItem3.ItemStatsId = itemStats3.Id;
             context.SaveChanges();
         }
     }
