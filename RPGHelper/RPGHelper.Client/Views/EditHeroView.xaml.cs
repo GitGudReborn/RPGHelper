@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,19 +18,21 @@ using RPGHelper.Services;
 namespace RPGHelper.Client.Views
 {
     /// <summary>
-    /// Interaction logic for AddHeroView.xaml
+    /// Interaction logic for EditHeroView.xaml
     /// </summary>
-    public partial class AddHeroView : Window
+    public partial class EditHeroView : Window
     {
         private RPGHelperContext context = new RPGHelperContext();
 
-        public AddHeroView()
+        public EditHeroView(Hero currentHero)
         {
             InitializeComponent();
+            DataContext = currentHero;
         }
 
         private void SaveHero_Button(object sender, RoutedEventArgs e)
         {
+            var currentHero = (Hero)DataContext;
             stsBarTextBlock.Foreground = new SolidColorBrush(Colors.MediumVioletRed);
             if (HeroNameBox.Text == null || HeroNameBox.Text.Length < 3 || HeroNameBox.Text.Length > 60)
             {
@@ -76,28 +77,16 @@ namespace RPGHelper.Client.Views
                 return;
             }
 
-            var user = AuthenticationService.GetCurrentUser();
+            var hero = context.Heroes.FirstOrDefault(h => h.Id == currentHero.Id);
 
-            var newHero = new Hero()
-            {
-                Name = HeroNameBox.Text,
-                Gold = decimal.Parse(GoldBox.Text),
-                UserId = user.Id
-            };
+            hero.Name = HeroNameBox.Text;
+            hero.Gold = decimal.Parse(GoldBox.Text);
+            hero.HeroStats.Hp = double.Parse(HpBox.Text);
+            hero.HeroStats.Mana = double.Parse(ManaBox.Text);
+            hero.HeroStats.Defence = double.Parse(DefenceBox.Text);
+            hero.HeroStats.AttackPower = double.Parse(AttackPowerBox.Text);
 
-            var newHeroStats = new HeroStats()
-            {
-                Hero = newHero,
-                Hp = double.Parse(HpBox.Text),
-                Mana = double.Parse(ManaBox.Text),
-                Defence = double.Parse(DefenceBox.Text),
-                AttackPower = double.Parse(AttackPowerBox.Text)
-            };
 
-            newHero.HeroStats = newHeroStats;
-
-            context.Heroes.Add(newHero);
-            context.HeroStatistics.Add(newHeroStats);
             context.SaveChanges();
             stsBarTextBlock.Foreground = new SolidColorBrush(Colors.Green);
             stsBarTextBlock.Text = "Success!";

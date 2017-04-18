@@ -28,58 +28,7 @@ namespace RPGHelper.Client.Views
         {
             InitializeComponent();
             LoadData();
-
-            //var hero1 = new Hero()
-            //{
-            //    Name = "Kunkka",
-            //    Gold = 2000m
-            //};
-
-            //var hero2 = new Hero()
-            //{
-            //    Name = "Sven",
-            //    Gold = 2000m
-            //};
-
-            //var hero3 = new Hero()
-            //{
-            //    Name = "Mirana",
-            //    Gold = 2000m
-            //};
-
-            //var heroes = new List<Hero>();
-
-            //heroes.Add(hero1);
-            //heroes.Add(hero2);
-            //heroes.Add(hero3);
-
-            //foreach (var hero in heroes)
-            //{
-            //    var listHeroes = new ListViewItem();
-            //    listHeroes.Content = hero.Name;
-            //    HeroesList.Items.Add(listHeroes);
-            //}
-
-            //HeroesList.Items.Add(heroes);
-
-            var context = new RPGHelperContext();
-
-            var user = AuthenticationService.GetCurrentUser();
-
-            var heroes = context.Heroes
-                //.Where(h => h.UserId == user.Id)
-                .OrderBy(h => h.Name)
-                .ToList();
-
-            var heroesList = new List<Hero>();
-
-            foreach (var hero in heroes)
-            {
-                heroesList.Add(hero);
-            }
-
-            //this.DataContext = new List<Hero>(heroesList);
-            //HeroesList.ItemsSource = heroesList;
+            
         }
 
         public void LoadData()
@@ -90,7 +39,7 @@ namespace RPGHelper.Client.Views
             this.DataContext = new ObservableCollection<Hero>
                 (
                     context.Heroes
-                    //.Where(h => h.UserId == user.Id)
+                    .Where(h => h.UserId == user.Id)
                     .OrderBy(h => h.Name)
                     .ToList()
                 );
@@ -105,7 +54,14 @@ namespace RPGHelper.Client.Views
 
         private void EditHero_OnClick(object sender, RoutedEventArgs e)
         {
+            var context = new RPGHelperContext();
+            Button b = sender as Button;
+            var currentHeroId = (int)b.DataContext;
+            var currentHero = context.Heroes.FirstOrDefault(h => h.Id == currentHeroId);
 
+            var edditHero = new EditHeroView(currentHero);
+            edditHero.Show();
+            LoadData();
         }
 
         private void DeleteHero_Click(object sender, RoutedEventArgs e)
@@ -137,13 +93,12 @@ namespace RPGHelper.Client.Views
                     }
                 }
                 MessageBox.Show("Hero removed successfully!");
+                LoadData();
             }
-            else
+            if (currentHero == null)
             {
                 MessageBox.Show("This Hero is not added yet!");
             }
-
-            LoadData();
         }
     }
 }

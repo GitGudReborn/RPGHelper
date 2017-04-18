@@ -81,6 +81,9 @@
     <Compile Include="Views\AddHeroView.xaml.cs">
       <DependentUpon>AddHeroView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EditHeroView.xaml.cs">
+      <DependentUpon>EditHeroView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HeroesView.xaml.cs">
       <DependentUpon>HeroesView.xaml</DependentUpon>
     </Compile>
@@ -122,6 +125,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AddHeroView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditHeroView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
