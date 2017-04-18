@@ -78,6 +78,9 @@
     <Compile Include="ViewModels\ImportExportViewModel.cs" />
     <Compile Include="ViewModels\ItemsViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
+    <Compile Include="Views\AddHeroView.xaml.cs">
+      <DependentUpon>AddHeroView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HeroesView.xaml.cs">
       <DependentUpon>HeroesView.xaml</DependentUpon>
     </Compile>
@@ -115,6 +118,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Register.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddHeroView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -98,29 +98,9 @@ namespace RPGHelper.Client.Views
 
         private void AddHero_Click(object sender, RoutedEventArgs e)
         {
-            var context = new RPGHelperContext();
-            var user = AuthenticationService.GetCurrentUser();
-            
-            var newHero = new Hero
-            {
-                Name = "New Hero",
-                Gold = 0.00m,
-                UserId = user.Id
-            };
-
-            var newStats = new HeroStats()
-            {
-                Hero = newHero,
-                Hp = 0,
-                Defence = 0,
-                AttackPower = 0,
-                Mana = 0
-            };
-
-            context.Heroes.Add(newHero);
-            context.HeroStatistics.Add(newStats);
-
-            ((ObservableCollection<Hero>)DataContext).Add(newHero);
+            var addNewHero = new AddHeroView();
+            addNewHero.Show();
+            LoadData();
         }
 
         private void EditHero_OnClick(object sender, RoutedEventArgs e)
