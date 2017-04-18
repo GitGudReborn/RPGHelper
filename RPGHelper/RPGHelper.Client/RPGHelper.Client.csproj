@@ -173,7 +173,6 @@
     <Resource Include="Media\removeFriendIconSmall.png" />
     <Resource Include="Media\removeFriendIconSmallHover.png" />
     <Resource Include="Media\frame.png" />
-    <Resource Include="Media\images.png" />
     <Content Include="Media\Spirax-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -190,7 +189,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RPGHelper.Data\RPGHelper.Data.csproj">
@@ -217,29 +218,20 @@
     <Resource Include="Media\minimize.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\minimize2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Media\exit.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Media\Black_Gold_Background_2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\base-of-shield-logo-clip-art-at-clker-com-vector-clip-art-online-GynG8f-clipart.png" />
-    <Resource Include="Media\black-and-gold-wallpaper-iphone-1-background-wallpaper.jpg" />
     <Resource Include="Media\black-close-button-png-2.png" />
     <Resource Include="Media\close.png" />
     <Resource Include="Media\index.jpg" />
     <Resource Include="Media\info.png" />
-    <Resource Include="Media\magnifying-glass.png" />
     <Resource Include="Media\minimize-icon-30.png" />
     <Resource Include="Media\nsamor.jpg" />
-    <Resource Include="Media\search.png" />
-    <Resource Include="Media\shield-gold.png" />
     <Resource Include="Media\3DE_Parchment_2_bg_PB.png" />
     <Resource Include="Media\Artanis_SC2_Head4.jpg" />
-    <Resource Include="Media\large-ribbon-gold-hi.png" />
     <Resource Include="Media\ProfilePictures\anonymous-person.png" />
     <Content Include="Media\successSound.wav" />
   </ItemGroup>
