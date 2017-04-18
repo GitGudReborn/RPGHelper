@@ -95,15 +95,40 @@
                             </ListView.ItemContainerStyle>
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Width="120" Header="Username">
+                                    <GridViewColumn Width="100" Header="Username">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding Username}" FontWeight="DemiBold"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Width="120" Header="Fullname" DisplayMemberBinding="{Binding Fullname}" />
-                                    <GridViewColumn Width="100" Header="Gender" DisplayMemberBinding="{Binding Gender}"/>
+                                    <GridViewColumn Width="100" Header="Fullname" DisplayMemberBinding="{Binding Fullname}" />
+                                    <GridViewColumn Width="90" Header="Gender" DisplayMemberBinding="{Binding Gender}"/>
+                                    <GridViewColumn Width="50" Header="Remove">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Click="RemoveFriendButton_Click">
+                                                    <Button.Template>
+                                                        <ControlTemplate>
+                                                            <Image MaxHeight="16" MaxWidth="16">
+                                                                <Image.Style>
+                                                                    <Style TargetType="{x:Type Image}">
+                                                                        <Setter Property="Source" Value="/RPGHelper.Client;component/Media/removeFriendIconSmall.png"/>
+                                                                        <Style.Triggers>
+                                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                                <Setter Property="Source" Value="/RPGHelper.Client;component/Media/removeFriendIconSmallHover.png"/>
+                                                                            </Trigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </Image.Style>
+                                                            </Image>
+                                                        </ControlTemplate>
+                                                    </Button.Template>
+                                                </Button>
+
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -133,18 +158,16 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0" Grid.Row="0" FontSize="12" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center">Username:</Label>
                                 <Separator Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom" Margin="5,0,5,0"/>
-                                <TextBox Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
-                                <Button Grid.Column="1" Grid.Row="1" Content="Search" Margin="5"/>
-                                <Button Grid.Column="2" Grid.Row="1" Content="Add" IsEnabled="False" Margin="5" />
+                                <TextBox Name="searchBox" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="18" KeyDown="SearchBox_KeyDown" PreviewKeyDown="IgnoreSpace_PreviewKeyDown"/>
+                                <Button Name="searchButton" Grid.Column="1" Grid.Row="1" Content="Search" Margin="5" Click="SearchButton_Click"/>
+                                <Button Name="addFriendButton" Grid.Column="2" Grid.Row="1" Content="Add" IsEnabled="False" Margin="5" Click="AddFriendButton_Click" />
                             </Grid>
                             <StatusBar Grid.Column="1" Grid.Row="2" Margin="3">
                                 <StatusBarItem HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center">
-                                    <TextBlock>
-                                        Status text
-                                    </TextBlock>
+                                    <TextBlock Name="searchStatusText"/>
                                 </StatusBarItem>
                             </StatusBar>
-                            
+
                         </Grid>
                     </Grid>
                 </TabItem>
@@ -267,17 +290,17 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Margin="0,2,0,0" TextWrapping="Wrap" Text="First name:" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-                        <TextBox Name="firstNameBox" Grid.Column="1" Margin="0,2,0,0" TextWrapping="Wrap" Text="{Binding User.FirstName, Mode=OneWay}" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+                        <TextBox Name="firstNameBox" Grid.Column="1" Margin="0,2,0,0" TextWrapping="Wrap" Text="{Binding User.FirstName, Mode=OneWay}" VerticalAlignment="Top" HorizontalContentAlignment="Center" PreviewKeyDown="IgnoreSpace_PreviewKeyDown"/>
                         <TextBlock Grid.Column="1" Margin="0,10,0,0" TextWrapping="Wrap" Text="{Binding User.FirstName, Mode=OneWay}" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
 
                         <TextBlock Grid.Column="0" Grid.Row="1" Margin="0,2,0,0" TextWrapping="Wrap" Text="Last name:" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-                        <TextBox Name="lastNameBox" Grid.Column="1" Grid.Row="1" Margin="0,2,0,0" TextWrapping="Wrap" Text="{Binding User.LastName, Mode=OneWay}" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+                        <TextBox Name="lastNameBox" Grid.Column="1" Grid.Row="1" Margin="0,2,0,0" TextWrapping="Wrap" Text="{Binding User.LastName, Mode=OneWay}" VerticalAlignment="Top" HorizontalContentAlignment="Center" PreviewKeyDown="IgnoreSpace_PreviewKeyDown"/>
                         <TextBlock Grid.Column="1" Grid.Row="1" Margin="0,10,0,0" TextWrapping="Wrap" Text="{Binding User.LastName, Mode=OneWay}" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
 
                         <TextBlock Grid.Column="0" Grid.Row="2" Margin="0,2,0,0" TextWrapping="Wrap" Text="Email:" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-                        <TextBox Name="emailBox" Grid.Column="1" Grid.Row="2" Margin="0,2,0,0" TextWrapping="Wrap" Text="{Binding User.Email, Mode=OneWay}" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+                        <TextBox Name="emailBox" Grid.Column="1" Grid.Row="2" Margin="0,2,0,0" TextWrapping="Wrap" Text="{Binding User.Email, Mode=OneWay}" VerticalAlignment="Top" HorizontalContentAlignment="Center" PreviewKeyDown="IgnoreSpace_PreviewKeyDown"/>
                         <TextBlock Grid.Column="1" Grid.Row="2" Margin="0,10,0,0" TextWrapping="Wrap" Text="{Binding User.Email, Mode=OneWay}" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
 
                         <TextBlock Grid.Column="0" Grid.Row="3" Margin="0,2,0,0" TextWrapping="Wrap" Text="Gender:" VerticalAlignment="Center" HorizontalAlignment="Center" />
@@ -302,10 +325,10 @@
 
                         <TextBlock Grid.Column="0" Grid.Row="5" Grid.RowSpan="2" Margin="0,2,0,0" TextWrapping="Wrap" Text="Password:" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-                        <PasswordBox Name="passBox1" Grid.Column="1" Grid.Row="5" Margin="0,2,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+                        <PasswordBox Name="passBox1" Grid.Column="1" Grid.Row="5" Margin="0,2,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" PreviewKeyDown="IgnoreSpace_PreviewKeyDown"/>
                         <TextBlock Grid.Column="1" Grid.Row="5" Margin="0,10,0,0" TextWrapping="Wrap" Text="New password" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
 
-                        <PasswordBox Name="passBox2" Grid.Column="1" Grid.Row="6" Margin="0,2,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+                        <PasswordBox Name="passBox2" Grid.Column="1" Grid.Row="6" Margin="0,2,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" PreviewKeyDown="IgnoreSpace_PreviewKeyDown"/>
                         <TextBlock Grid.Column="1" Grid.Row="6" Margin="0,10,0,0" TextWrapping="Wrap" Text="Confirm new password" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
                         <Grid Grid.Row="7" Grid.Column="1">
                             <Grid.RowDefinitions>

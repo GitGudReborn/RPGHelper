@@ -30,7 +30,7 @@ namespace RPGHelper.Client
             
         }
 
-        private void usernameAndPasswordBox_KeyDown(object sender, KeyEventArgs e)
+        private void UsernameAndPasswordBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Space)
             {

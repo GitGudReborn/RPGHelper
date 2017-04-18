@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using RPGHelper.Client.ViewModels;
 using RPGHelper.Data;
+using RPGHelper.Models;
 using RPGHelper.Services;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ namespace RPGHelper.Client.Views
     {
         private RPGHelperContext _context = new RPGHelperContext();
         private UserService _userService = new UserService();
+        private static string foundUsername = "";
         public ProfileView()
         {
             InitializeComponent();
@@ -295,6 +297,84 @@ namespace RPGHelper.Client.Views
             SoundPlayer soundPlayer = new SoundPlayer(@"..\..\Media\cancel.wav");
             soundPlayer.Play();
             stsBarTextBlock.Text = "Canceled, all clear!";
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            string searchArgument = searchBox.Text.Trim();
+            foundUsername = string.Empty;
+            addFriendButton.IsEnabled = false;
+            searchStatusText.Foreground = new SolidColorBrush(Colors.MediumVioletRed);
+            if (searchArgument.Equals(string.Empty))
+            {
+                searchStatusText.Text = "Username field cannot be empty!";
+                searchBox.Focus();
+                return;
+            }
+            if (!_userService.UserExists(searchArgument))
+            {
+                searchStatusText.Text = "No such user found!";
+                searchBox.Focus();
+                searchBox.SelectAll();
+                return;
+            }
+
+            searchStatusText.Foreground = new SolidColorBrush(Colors.Green);
+
+            foundUsername = searchBox.Text;
+            searchStatusText.Text = $"User ({foundUsername}) found, press Add to make friend.";
+            addFriendButton.IsEnabled = true;
+            addFriendButton.Focus();
+            
+        }
+
+        private void AddFriendButton_Click(object sender, RoutedEventArgs e)
+        {
+            addFriendButton.IsEnabled = false;
+            searchBox.Text = string.Empty;
+            if (_userService.HasFriend(foundUsername))
+            {
+                searchStatusText.Foreground = new SolidColorBrush(Colors.Blue);
+                searchStatusText.Text = $"User ({foundUsername}) is already your friend.";
+                foundUsername = string.Empty;
+                return;
+            }
+
+            _userService.AddFriend(foundUsername);
+            searchStatusText.Foreground = new SolidColorBrush(Colors.Green);
+            searchStatusText.Text = $"User ({foundUsername}) added to friends.";
+            foundUsername = string.Empty;
+            searchBox.Focus();
+
+            lvFriends.ItemsSource = _userService.GetFriends(AuthenticationService.GetCurrentUser().Id);
+        }
+
+        private void SearchBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                SearchButton_Click(sender, e);
+            }
+        }
+
+        private void IgnoreSpace_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void RemoveFriendButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            User user = button.DataContext as User;
+            string username = user.Username;
+
+            _userService.RemoveFriend(username);
+            searchStatusText.Foreground = new SolidColorBrush(Colors.Blue);
+            searchStatusText.Text = $"User ({username}) removed from friends.";
+            lvFriends.ItemsSource = _userService.GetFriends(AuthenticationService.GetCurrentUser().Id);
         }
     }
 }

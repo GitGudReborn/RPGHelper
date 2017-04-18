@@ -81,7 +81,7 @@ namespace RPGHelper.Services
         {
             using (var context = new RPGHelperContext())
             {
-                return context.Users.FirstOrDefault(u => u.Id == id).Friends.ToList();
+                return context.Users.FirstOrDefault(u => u.Id == id).Friends.OrderBy(f => f.Username).ToList();
             }
         }
 
@@ -109,6 +109,48 @@ namespace RPGHelper.Services
 
                 AuthenticationService.Logout();
                 AuthenticationService.Login(user.Username, user.Password);
+            }
+        }
+
+        public bool HasFriend(string foundUsername)
+        {
+            using (var context = new RPGHelperContext())
+            {
+                int userId = AuthenticationService.GetCurrentUser().Id;
+
+                return context.Users.FirstOrDefault(u => u.Id == userId).Friends.Any(f => f.Username.ToLower() == foundUsername.ToLower());
+            }
+        }
+
+        public void AddFriend(string foundUsername)
+        {
+            using (var context = new RPGHelperContext())
+            {
+                int userId = AuthenticationService.GetCurrentUser().Id;
+
+                var user = context.Users.FirstOrDefault(u => u.Id == userId);
+
+                var friend = context.Users.FirstOrDefault(u => u.Username.ToLower() == foundUsername.ToLower());
+
+                user.Friends.Add(friend);
+
+                context.SaveChanges();
+            }
+        }
+
+        public void RemoveFriend(string username)
+        {
+            using (var context = new RPGHelperContext())
+            {
+                int userId = AuthenticationService.GetCurrentUser().Id;
+
+                var user = context.Users.FirstOrDefault(u => u.Id == userId);
+
+                var friend = context.Users.FirstOrDefault(u => u.Username.ToLower() == username.ToLower());
+
+                user.Friends.Remove(friend);
+
+                context.SaveChanges();
             }
         }
     }

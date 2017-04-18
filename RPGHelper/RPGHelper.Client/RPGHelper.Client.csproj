@@ -167,6 +167,9 @@
     <Resource Include="Media\ProfilePictures\stock12.png" />
     <Content Include="Media\cancel.wav" />
     <Resource Include="Media\edit.png" />
+    <Resource Include="Media\removeFriendIcon.png" />
+    <Resource Include="Media\removeFriendIconSmall.png" />
+    <Resource Include="Media\removeFriendIconSmallHover.png" />
     <Content Include="Media\Spirax-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
