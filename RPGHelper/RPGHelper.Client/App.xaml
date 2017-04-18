@@ -44,7 +44,10 @@
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontFamily" Value="/Media/#Spirax" />
             <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         </Style>
+       
         <Style x:Key="TextBlockStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="15" />
             <Setter Property="Foreground" Value="LightSlateGray"/>

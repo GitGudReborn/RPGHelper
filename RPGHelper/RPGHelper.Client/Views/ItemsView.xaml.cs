@@ -34,11 +34,11 @@ namespace RPGHelper.Client.Views
 
         private void DetailsShow_Click(object sender, RoutedEventArgs e)
         {
+            Button b = sender as Button;
+            currentItem = (Item)b.DataContext;
+            currentItem = GetCurrentItem();
             var details = new ItemDetails();
             details.Show();
-            Button b = sender as Button;
-            currentItem = (Item)b.DataContext; 
-            currentItem.ItemStats = ItemService.GetItemStatsById(currentItem.Id);
         }
 
         public static Item GetCurrentItem()

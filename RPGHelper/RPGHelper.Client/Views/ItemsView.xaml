@@ -33,22 +33,46 @@
                   IsSynchronizedWithCurrentItem="True"
                   Grid.Row="1"
                   Grid.ColumnSpan="4"
-                  Grid.Column="0">
+                  Grid.Column="0"
+                  ScrollViewer.HorizontalScrollBarVisibility="Hidden" >
+            
             <ListView.Resources>
+                <Style TargetType="ListBoxItem">
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+                    </Style.Resources>
+                </Style>
                 <Style TargetType="GridViewColumnHeader">
                     <Setter Property="Visibility" Value="Collapsed" />
                 </Style>
+                <Style TargetType="ListViewItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="BorderBrush" Value="Transparent" />
+                            <Setter Property="BorderThickness" Value="0" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="BorderBrush" Value="Transparent" />
+                            <Setter Property="BorderThickness" Value="0" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+                
             </ListView.Resources>
             <ListView.View>
                 <GridView >
                     <GridViewColumn Width="120" DisplayMemberBinding="{Binding Name}" />
                     <GridViewColumn Width="120" DisplayMemberBinding="{Binding Cost}" />
                     <GridViewColumn Width="120" DisplayMemberBinding="{Binding ItemType}" />
-                    <GridViewColumn Width="240">
+                    <GridViewColumn Width="240" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock>
-                                    <Button Style="{StaticResource MyButtonStyle}" x:Name="Details" DataContext="{Binding}" Width="30" Height="30" Click="DetailsShow_Click" BorderBrush="Transparent">
+                                <TextBlock >
+                                    <Button Style="{StaticResource MyButtonStyle}" x:Name="Details" Command="{Binding Path=DataContext}" CommandParameter="{Binding}" Width="30" Height="30" Click="DetailsShow_Click" BorderBrush="Transparent">
                                     <Button.Background>
                                         <ImageBrush ImageSource="/RPGHelper.Client;component/Media/info.png"/>
                                     </Button.Background>

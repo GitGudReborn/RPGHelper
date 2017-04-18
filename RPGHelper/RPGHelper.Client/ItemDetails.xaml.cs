@@ -21,11 +21,11 @@ namespace RPGHelper.Client
     /// </summary>
     public partial class ItemDetails : Window
     {
-        private static Item currentItem = new Item();
+        
         public ItemDetails()
         {
             InitializeComponent();
-            currentItem = ItemsView.GetCurrentItem();
+            var currentItem = ItemsView.GetCurrentItem();
             DataContext = currentItem;
         }
 
