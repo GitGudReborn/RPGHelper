@@ -1,0 +1,82 @@
+﻿<Window x:Class="RPGHelper.Client.ItemEdit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RPGHelper.Client"
+        mc:Ignorable="d"
+        Title="ItemDetails" Height="400" Width="400" 
+        Icon="Media/RPG_Icon.png" WindowStyle="None" 
+        AllowsTransparency="True" WindowStartupLocation="CenterScreen"
+        BorderBrush="Transparent" Background="Transparent" Foreground="Transparent">
+    <Window.Resources>
+        
+    </Window.Resources>
+    <Grid MouseLeftButtonDown="Move">
+        <Grid.Effect>
+            <DropShadowEffect/>
+        </Grid.Effect>
+        <Grid.Background>
+            <ImageBrush ImageSource="Media/3DE_Parchment_2_bg_PB.png"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition />
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+       <Button Style="{StaticResource MyButtonStyle}" 
+               x:Name="Close" BorderBrush="Transparent" 
+               Click="Close_OnClick" HorizontalAlignment="Left"
+               Margin="350,10,0,0" VerticalAlignment="Top" 
+               Width="50" Height="50" RenderTransformOrigin="1.685,0.657"
+               Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0">
+            <Button.Background>
+                <ImageBrush ImageSource="Media/close.png"/>
+            </Button.Background>
+        </Button>
+        <Label Grid.Row="1" Grid.Column="0" 
+               Style="{StaticResource ColorText}" 
+               Content="Edit item: "
+               HorizontalAlignment="Right"/>
+        <TextBlock Text="{Binding Name}" Grid.Row="1" Grid.Column="1" 
+                   Style="{StaticResource TextBlockStyle}" 
+                   VerticalAlignment="Bottom" HorizontalAlignment="Left" />
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="0" >
+            <Label Content="Name" Style="{StaticResource ColorText}" FontSize="16" HorizontalAlignment="Right" />
+            <Label Content="Price" Style="{StaticResource ColorText}" FontSize="16" HorizontalAlignment="Right" />
+            <Label Content="Description" Style="{StaticResource ColorText}" FontSize="16" HorizontalAlignment="Right" />
+            <Label Content="Item Type" Style="{StaticResource ColorText}" FontSize="16" HorizontalAlignment="Right" />
+            <Label Content="Rarity" Style="{StaticResource ColorText}" FontSize="16" HorizontalAlignment="Right" />
+            <Label Content="Slot" Style="{StaticResource ColorText}" FontSize="16" HorizontalAlignment="Right" />
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1">
+            <TextBox Text="{Binding Name}" Style="{StaticResource TextBoxStyle}"/>
+            <TextBox Text="{Binding Cost}" Style="{StaticResource TextBoxStyle}" />
+            <TextBox Text="{Binding Description}" Style="{StaticResource TextBoxStyle}" />
+            <TextBox Text="{Binding ItemType}" Style="{StaticResource TextBoxStyle}" />
+            <TextBox Text="{Binding Rarity}" Style="{StaticResource TextBoxStyle}" />
+            <TextBox Text="{Binding Slot}" Style="{StaticResource TextBoxStyle}" />
+       </StackPanel>
+        <Label Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0" 
+               Style="{StaticResource ColorText}" 
+               Content="Item Statistics"
+               HorizontalAlignment="Center"
+               />
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="0" >
+            <Label Content="Attack" Style="{StaticResource ColorText}" HorizontalAlignment="Right" />
+            <Label Content="Defence" Style="{StaticResource ColorText}" HorizontalAlignment="Right" />
+        </StackPanel>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="1">
+            <TextBox Text="{Binding Path=ItemStats.Attack}" Style="{StaticResource TextBoxStyle}" Width="30" />
+            <TextBox Text="{Binding Path=ItemStats.Defence}" Style="{StaticResource TextBoxStyle}" Width="30" />
+        </StackPanel>
+    </Grid>
+</Window>
+    

@@ -52,6 +52,10 @@ namespace RPGHelper.Client.Views
 
             Button b = sender as Button;
             currentItem = (Item)b.DataContext;
+            currentItem = GetCurrentItem();
+
+            var edit = new ItemEdit();
+            edit.Show();
         }
 
         private void DeleteItem_Click(object sender, RoutedEventArgs e)
