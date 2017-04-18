@@ -25,6 +25,7 @@ namespace RPGHelper.Data
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<ItemStats> ItemStatistics { get; set; }
         public virtual DbSet<Minion> Minions { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -65,6 +66,16 @@ namespace RPGHelper.Data
                      m.MapRightKey("FriendId");
                      m.ToTable("UsersFriends");
                  });
+
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.SentMessages)
+                .WithRequired(m => m.Sender)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.ReceivedMessages)
+                .WithRequired(m => m.Recipient)
+                .WillCascadeOnDelete(false);
         }
     }
 

@@ -16,6 +16,19 @@
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <VisualBrush x:Key="HintText" Stretch="None" AlignmentX="Center" AlignmentY="Center" >
+                <VisualBrush.Transform>
+                    <TranslateTransform X="0" Y="0" />
+                </VisualBrush.Transform>
+                <VisualBrush.Visual>
+                    <Grid HorizontalAlignment="Center">
+                        <TextBlock  FontSize="10"   FontWeight="Normal"
+                           HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" FontStyle="Italic" Opacity="1" Text="Enter Filter word"/>
+                    </Grid>
+                </VisualBrush.Visual>
+            </VisualBrush>
+        </Grid.Resources>
         <Border BorderThickness="5"
         BorderBrush="#AA9300"
                 Margin="33,10,33,8" Grid.Row="0" Grid.Column="0">
@@ -71,10 +84,7 @@
         </Grid>
         <DockPanel Grid.Column="1" Grid.RowSpan="3">
             <TabControl TabStripPlacement="Top" HorizontalAlignment="Stretch"  Margin="10,10,0,0" VerticalAlignment="Stretch">
-                <TabItem Header="Statistics">
-                    <Grid Background="DarkCyan"/>
-                </TabItem>
-                <TabItem Header="Friends">
+                <TabItem Header="Friends" Name="FriendsTab">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"/>
@@ -171,10 +181,67 @@
                         </Grid>
                     </Grid>
                 </TabItem>
-                <TabItem Header="Messages">
-                    <Grid Background="DarkKhaki"/>
+                <TabItem Name="InboxTab" Header="Inbox">
+
                 </TabItem>
-                <TabItem Header="Change avatar">
+                <TabItem Name="OutboxTab" Header="Outbox">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="7*"/>
+                            <RowDefinition Height="7*"/>
+                            <RowDefinition Height="40*"/>
+                            <RowDefinition Height="10*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="12*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Grid.Row="0" Margin="7,0,0,0" HorizontalAlignment="Left" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center">To:</Label>
+                        <ComboBox Name="friendsCombobox" Grid.Column="0" Grid.Row="0" Margin="35,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <TextBox Name="nameFilter" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" VerticalAlignment="Top" Margin="5" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" PreviewKeyDown="IgnoreSpace_PreviewKeyDown" KeyDown="NameFilter_KeyDown">
+                            <TextBox.Style>
+                                <Style TargetType="{x:Type TextBox}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=nameFilter,Path=Text}" Value="" >
+                                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+                        <Button Name="applyFilterBtn" Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom" Margin="5" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Apply" Click="ApplyFilterBtn_Click"/>
+                        <Button Name="removeFilterBtn" Grid.Column="2" Grid.Row="0" VerticalAlignment="Bottom" Margin="5" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Remove" Click="RemoveFilterBtn_Click"/>
+                        <Grid Grid.Column="0" Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="18*"/>
+                                <ColumnDefinition Width="44*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Grid.Row="0" Margin="7,0,0,0" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center" Content="Subject:" FontWeight="DemiBold" FontSize="15"/>
+                            <TextBox Name="msgSubjectBox" Grid.Column="1" Grid.Row="0" Margin="0,0,10,0" HorizontalAlignment="Stretch" VerticalAlignment="Center" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="13" FontWeight="Normal" FontStyle="Italic" PreviewKeyDown="MsgSubjectBox_PreviewKeyDown"/>
+                        </Grid>
+                        <Button Name="clearMsg" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="1" Margin="5" Content="Clear" Click="ClearMsg_Click"/>
+                        <Button Name="sendMsg" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="1" Margin="5" Content="Send" Click="SendMsg_Click"/>
+                        <Label Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Center" HorizontalContentAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Center" Content="Content:"  FontWeight="DemiBold" FontSize="15"/>
+                        <TextBox Name="msgContentBox" Grid.Column="0" Margin="5" Grid.Row="3" Grid.ColumnSpan="3" BorderThickness="2" FontSize="13" FontWeight="Light" TextWrapping="Wrap" PreviewKeyDown="MsgContentBox_PreviewKeyDown"/>
+                        <StatusBar Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4" Margin="10" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" VerticalContentAlignment="Center">
+                            <StatusBarItem HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center">
+                                <TextBlock Name="outboxStatus"/>
+                            </StatusBarItem>
+                        </StatusBar>
+                    </Grid>
+                </TabItem>
+                <TabItem Name="ChangeAvatarTab" Header="Change avatar">
                     <Grid Background="White">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"/>
@@ -197,10 +264,9 @@
 
                             <Border BorderBrush="Black"  Margin="0,10,0,10" Grid.Column="1" BorderThickness="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                                 <Image Name="avatarPic"
-           Stretch="Fill"
-           VerticalAlignment="Stretch"
-           HorizontalAlignment="Stretch"
-               />
+                                       Stretch="Fill"
+                                       VerticalAlignment="Stretch"
+                                       HorizontalAlignment="Stretch"/>
                             </Border>
                         </Grid>
                         <Button Content="Open" Grid.Column="1" HorizontalAlignment="Stretch" Margin="10,10,10,0" VerticalAlignment="Top"  Height="30" Click="OpenBtn_Click"/>
@@ -271,7 +337,7 @@
                         </Grid>
                     </Grid>
                 </TabItem>
-                <TabItem Header="Edit Profile">
+                <TabItem Name="EditProfileTab" Header="Edit Profile">
                     <Grid >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"/>

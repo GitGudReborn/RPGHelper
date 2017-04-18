@@ -30,6 +30,7 @@ namespace RPGHelper.Client.Views
     {
         private RPGHelperContext _context = new RPGHelperContext();
         private UserService _userService = new UserService();
+        private MessageService _messageService = new MessageService();
         private static string foundUsername = "";
         public ProfileView()
         {
@@ -54,6 +55,7 @@ namespace RPGHelper.Client.Views
             passBox2.Password = passBox1.Password;
 
             lvFriends.ItemsSource = _userService.GetFriends(AuthenticationService.GetCurrentUser().Id);
+            friendsCombobox.ItemsSource = _userService.GetFriendsUsernames(AuthenticationService.GetCurrentUser().Id, nameFilter.Text);
         }
 
         private void OpenBtn_Click(object sender, RoutedEventArgs e)
@@ -325,7 +327,7 @@ namespace RPGHelper.Client.Views
             searchStatusText.Text = $"User ({foundUsername}) found, press Add to make friend.";
             addFriendButton.IsEnabled = true;
             addFriendButton.Focus();
-            
+
         }
 
         private void AddFriendButton_Click(object sender, RoutedEventArgs e)
@@ -375,6 +377,104 @@ namespace RPGHelper.Client.Views
             searchStatusText.Foreground = new SolidColorBrush(Colors.Blue);
             searchStatusText.Text = $"User ({username}) removed from friends.";
             lvFriends.ItemsSource = _userService.GetFriends(AuthenticationService.GetCurrentUser().Id);
+        }
+
+        private void ApplyFilterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            outboxStatus.Foreground = new SolidColorBrush(Colors.Blue);
+            outboxStatus.Text = $"Filter applied.";
+            friendsCombobox.ItemsSource = _userService.GetFriendsUsernames(AuthenticationService.GetCurrentUser().Id, nameFilter.Text);
+        }
+
+        private void RemoveFilterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            outboxStatus.Foreground = new SolidColorBrush(Colors.Blue);
+            outboxStatus.Text = $"Filter removed.";
+            nameFilter.Text = string.Empty;
+            friendsCombobox.ItemsSource = _userService.GetFriendsUsernames(AuthenticationService.GetCurrentUser().Id, nameFilter.Text);
+        }
+
+        private void ClearMsg_Click(object sender, RoutedEventArgs e)
+        {
+            msgSubjectBox.Text = string.Empty;
+            msgContentBox.Text = string.Empty;
+            outboxStatus.Foreground = new SolidColorBrush(Colors.Blue);
+            outboxStatus.Text = $"Fields cleared.";
+        }
+
+        private void SendMsg_Click(object sender, RoutedEventArgs e)
+        {
+            outboxStatus.Foreground = new SolidColorBrush(Colors.MediumVioletRed);
+
+            string usernameSelected = friendsCombobox.Text;
+
+            if (usernameSelected == string.Empty)
+            {
+                outboxStatus.Text = $"You must select a recipient!";
+                return;
+            }
+
+            if (msgSubjectBox.Text.Length == 0)
+            {
+                outboxStatus.Text = $"Message subject cannot be empty!";
+                return;
+            }
+
+            if (msgContentBox.Text.Length == 0)
+            {
+                outboxStatus.Text = $"Message content cannot be empty!";
+                return;
+            }
+
+            _messageService.SendMessage(usernameSelected, msgSubjectBox.Text, msgContentBox.Text);
+            outboxStatus.Foreground = new SolidColorBrush(Colors.Green);
+            outboxStatus.Text = $"Message to {usernameSelected} sent!";
+            msgSubjectBox.Text = string.Empty;
+            msgContentBox.Text = string.Empty;
+        }
+
+        private void NameFilter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                ApplyFilterBtn_Click(sender, e);
+            }
+        }
+
+        private void MsgSubjectBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (msgSubjectBox.Text.Length >= 25)
+            {
+                if (e.Key != Key.Delete && e.Key != Key.Back)
+                {
+                    e.Handled = true;
+                    outboxStatus.Foreground = new SolidColorBrush(Colors.MediumVioletRed);
+                    outboxStatus.Text = "Subject text length allowed: 25 characters!";
+                }
+            }
+            else
+            {
+                outboxStatus.Foreground = new SolidColorBrush(Colors.Blue);
+                outboxStatus.Text = $"Subject characters left: {25 - msgSubjectBox.Text.Length}";
+            }
+        }
+
+        private void MsgContentBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (msgContentBox.Text.Length >= 500)
+            {
+                if (e.Key != Key.Delete && e.Key != Key.Back)
+                {
+                    e.Handled = true;
+                    outboxStatus.Foreground = new SolidColorBrush(Colors.MediumVioletRed);
+                    outboxStatus.Text = "Content text length allowed: 500 characters!";
+                }
+            }
+            else
+            {
+                outboxStatus.Foreground = new SolidColorBrush(Colors.Blue);
+                outboxStatus.Text = $"Content characters left: {500 - msgContentBox.Text.Length}";
+            }
         }
     }
 }

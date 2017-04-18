@@ -77,6 +77,14 @@ namespace RPGHelper.Services
             }
         }
 
+        public IEnumerable GetFriendsUsernames(int id, string filter)
+        {
+            using (var context = new RPGHelperContext())
+            {
+                return context.Users.FirstOrDefault(u => u.Id == id).Friends.OrderBy(f => f.Username).Where(f => f.Username.ToLower().Contains(filter.ToLower())).Select(uf => uf.Username).ToList();
+            }
+        }
+
         public IEnumerable GetFriends(int id)
         {
             using (var context = new RPGHelperContext())

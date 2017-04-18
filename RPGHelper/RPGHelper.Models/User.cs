@@ -16,6 +16,8 @@ namespace RPGHelper.Models
         {
             this.Heroes = new List<Hero>();
             this.Friends = new List<User>();
+            this.SentMessages = new List<Message>();
+            this.ReceivedMessages = new List<Message>();
         }
 
         [Key]
@@ -52,6 +54,10 @@ namespace RPGHelper.Models
                 return $"{this.FirstName} {this.LastName}";
             }
         }
+
+        public virtual ICollection<Message> SentMessages { get; set; }
+
+        public virtual ICollection<Message> ReceivedMessages { get; set; }
 
         public virtual ICollection<Hero> Heroes { get; set; }
 
