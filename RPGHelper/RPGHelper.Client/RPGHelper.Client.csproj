@@ -165,15 +165,21 @@
     <Resource Include="Media\ProfilePictures\stock10.png" />
     <Resource Include="Media\ProfilePictures\stock11.png" />
     <Resource Include="Media\ProfilePictures\stock12.png" />
+    <Resource Include="Media\blackframe.png" />
+    <Resource Include="Media\bright-red-border-swirl-hi.png" />
     <Content Include="Media\cancel.wav" />
     <Resource Include="Media\edit.png" />
     <Resource Include="Media\removeFriendIcon.png" />
     <Resource Include="Media\removeFriendIconSmall.png" />
     <Resource Include="Media\removeFriendIconSmallHover.png" />
+    <Resource Include="Media\frame.png" />
+    <Resource Include="Media\images.png" />
     <Content Include="Media\Spirax-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Media\TrashIt_icon_trnspt.png" />
+    <Resource Include="Media\border.png" />
+    <Resource Include="Media\swirl-red-clip-art.png" />
     <Content Include="Media\UnifrakturCook-Bold.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RPGHelper.Client"
         mc:Ignorable="d"
-        Title="ItemDetails" Height="400" Width="400" 
+        Title="ItemDetails" Height="400" Width="450" 
         Icon="Media/RPG_Icon.png" WindowStyle="None" 
         AllowsTransparency="True" WindowStartupLocation="CenterScreen"
         BorderBrush="Transparent" Background="Transparent" Foreground="Transparent">
     <Window.Resources>
-        
+
     </Window.Resources>
     <Grid MouseLeftButtonDown="Move">
         <Grid.Effect>
@@ -30,12 +30,12 @@
             <RowDefinition Height="25"/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
-       <Button Style="{StaticResource MyButtonStyle}" 
+        <Button Style="{StaticResource MyButtonStyle}" 
                x:Name="Close" BorderBrush="Transparent" 
                Click="Close_OnClick" HorizontalAlignment="Left"
-               Margin="350,10,0,0" VerticalAlignment="Top" 
+               Margin="240,10,0,0" VerticalAlignment="Top" 
                Width="50" Height="50" RenderTransformOrigin="1.685,0.657"
-               Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0">
+               Grid.Row="0" Grid.Column="1">
             <Button.Background>
                 <ImageBrush ImageSource="Media/close.png"/>
             </Button.Background>
@@ -63,11 +63,11 @@
             <TextBox Text="{Binding ItemType}" Style="{StaticResource TextBoxStyle}" />
             <TextBox Text="{Binding Rarity}" Style="{StaticResource TextBoxStyle}" />
             <TextBox Text="{Binding Slot}" Style="{StaticResource TextBoxStyle}" />
-       </StackPanel>
-        <Label Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0" 
+        </StackPanel>
+        <Label Grid.Row="3" Grid.Column="1" 
                Style="{StaticResource ColorText}" 
                Content="Item Statistics"
-               HorizontalAlignment="Center"
+               HorizontalAlignment="Center" Margin="26,0,194,0"
                />
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="0" >
             <Label Content="Attack" Style="{StaticResource ColorText}" HorizontalAlignment="Right" />
@@ -75,8 +75,13 @@
         </StackPanel>
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="1">
             <TextBox Text="{Binding Path=ItemStats.Attack}" Style="{StaticResource TextBoxStyle}" Width="30" />
-            <TextBox Text="{Binding Path=ItemStats.Defence}" Style="{StaticResource TextBoxStyle}" Width="30" />
+            <TextBox Text="{Binding ItemStats.Defence}" Style="{StaticResource TextBoxStyle}" Width="30" />
         </StackPanel>
+        <Button x:Name="button" Content="Save Changes" Foreground="#BF0000" FontFamily="/Media/#UnifrakturCook" FontSize="18" Style="{StaticResource MyButtonStyle}" Grid.Column="1" HorizontalAlignment="Left" Margin="131,20,0,0" Grid.Row="3" VerticalAlignment="Top" Width="111" Height="57" Grid.RowSpan="2" Click="button_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/RPGHelper.Client;component/Media/swirl-red-clip-art.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
     

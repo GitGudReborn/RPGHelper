@@ -38,5 +38,10 @@ namespace RPGHelper.Client
         {
             Close();
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }
