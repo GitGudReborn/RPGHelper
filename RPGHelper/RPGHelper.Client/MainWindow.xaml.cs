@@ -87,7 +87,6 @@ namespace RPGHelper.Client
             newLoginWindow.Show();
             this.Close();
             AuthenticationService.Logout();
-            MessageBox.Show("You are no longed loged in");
         }
     }
 }

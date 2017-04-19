@@ -11,18 +11,49 @@
             <ImageBrush ImageSource="/RPGHelper.Client;component/Media/images.jpg"/>
         </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="44*"/>
-            <RowDefinition Height="373*"/>
-            <RowDefinition Height="63*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition />
+            <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="7*"/>
-            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock x:Name="textBox" Text="All Heroes" Grid.Row="0" Grid.Column="0" FontSize="22" FontWeight="Bold" TextAlignment="Center" Background="Coral"/>
+        <TextBlock x:Name="textBox" Style="{StaticResource TextBlockStyle}" Text="All Heroes" Foreground="Cornsilk"  Grid.Row="0" Grid.Column="0" FontSize="22" FontWeight="Bold" TextAlignment="Center" Background="DarkGoldenrod"/>
 
-        <ListView x:Name="HeroesList" FontSize="18" Grid.Row="1" ItemsSource="{Binding}" Style="{StaticResource ListViewStyle}" IsSynchronizedWithCurrentItem="True">
+        <ListView x:Name="HeroesList" FontSize="18" Grid.Row="1" 
+                  ItemsSource="{Binding}" Grid.Column="0" 
+                  Style="{StaticResource ListViewStyle}" 
+                  IsSynchronizedWithCurrentItem="True"
+                  ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+            <ListView.Resources>
+                <Style TargetType="GridViewColumnHeader">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Foreground" Value="AntiqueWhite"/>
+                </Style>
+                <Style TargetType="ListBoxItem">
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+                    </Style.Resources>
+                </Style>
+                <Style TargetType="ListViewItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="BorderBrush" Value="Transparent" />
+                            <Setter Property="BorderThickness" Value="0" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="BorderBrush" Value="Transparent" />
+                            <Setter Property="BorderThickness" Value="0" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.Resources>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
@@ -31,20 +62,70 @@
             </ListView.View>
         </ListView>
 
-        <Label ContentStringFormat="{}{0} Stats:" Content="{Binding Name}" Grid.Column="1" 
+        <Label ContentStringFormat="{}{0} Stats:" Content="{Binding Name}" Grid.Column="1" Grid.Row="0"
                HorizontalAlignment="Center" VerticalAlignment="Center"
-               FontFamily="KoreanFont,georgia,serif" FontSize="24"/>
+               Style="{StaticResource ColorText}" Foreground="AntiqueWhite" FontSize="24"/>
         <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock Text="{Binding Path=HeroStats.Hp , StringFormat='Hp: {0}'}" 
+                       Style="{StaticResource TextBlockStyle}" 
+                       FontSize="20" 
+                       HorizontalAlignment="Center" 
+                       Margin="5,0,0,0" 
+                       Padding="5" 
+                       LineHeight="25" />
 
-            <TextBlock Text="{Binding Path=HeroStats.Hp , StringFormat='Hp: {0}'}" Style="{StaticResource TextBlockStyle}" FontSize="24" HorizontalAlignment="Left" Margin="5,0,0,0" Padding="5" Width="40" ></TextBlock>
+            <TextBlock Text="{Binding Path=HeroStats.Mana, StringFormat='Mana: {0}'}" 
+                       Style="{StaticResource TextBlockStyle}" 
+                       FontSize="20" 
+                       HorizontalAlignment="Center" 
+                       Margin="5,0,0,0" 
+                       Padding="5" 
+                       LineHeight="25" />
 
-            <TextBlock Text="{Binding Path=HeroStats.Mana, StringFormat='Mana: {0}'}" Style="{StaticResource TextBlockStyle}" FontSize="24" HorizontalAlignment="Left" Margin="5,0,0,0" Padding="20" Height="35"></TextBlock>
+            <TextBlock Text="{Binding Path=HeroStats.AttackPower, StringFormat='AttackPower: {0}'}" 
+                       Style="{StaticResource TextBlockStyle}" 
+                       FontSize="20" 
+                       HorizontalAlignment="Center" 
+                       Margin="5,0,0,0" 
+                       Padding="5" 
+                       LineHeight="25"/>
 
-            <TextBlock Text="{Binding Path=HeroStats.AttackPower, StringFormat='AttackPower: {0}'}" Style="{StaticResource TextBlockStyle}" FontSize="24" HorizontalAlignment="Left" Margin="5,0,0,0" Padding="20" Height="39"></TextBlock>
-
-            <TextBlock Text="{Binding Path=HeroStats.Defence, StringFormat='Defence: {0}'}" 
-                       Style="{StaticResource TextBlockStyle}" FontSize="24" HorizontalAlignment="Left" Margin="5,0,0,0" Padding="20" Height="46"></TextBlock>
+            <TextBlock Text="{Binding Path=HeroStats.Defence, StringFormat='Defence: {0}'}"      
+                       Style="{StaticResource TextBlockStyle}" 
+                       FontSize="20" 
+                       HorizontalAlignment="Center" 
+                       Margin="5,0,0,0" 
+                       Padding="5" 
+                       LineHeight="25"/>
+            
             <ListView x:Name="test" Style="{StaticResource ListViewStyle}" FontSize="18" ItemsSource="{Binding Items}" IsSynchronizedWithCurrentItem="True">
+                <ListView.Resources>
+                    <Style TargetType="GridViewColumnHeader">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Foreground" Value="AntiqueWhite"/>
+                    </Style>
+                    <Style TargetType="ListViewItem">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Transparent" />
+                                <Setter Property="BorderBrush" Value="Transparent" />
+                                <Setter Property="BorderThickness" Value="0" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="Transparent" />
+                                <Setter Property="BorderBrush" Value="Transparent" />
+                                <Setter Property="BorderThickness" Value="0" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    <Style TargetType="ListBoxItem">
+                        <Style.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent"/>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+                        </Style.Resources>
+                    </Style>
+                </ListView.Resources>
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
@@ -73,14 +154,13 @@
                 Content="Edit" 
                 Grid.Column="1" 
                 DataContext="{Binding Id}" 
-                HorizontalAlignment="Left" 
-                Margin="415,10,0,0" 
+                HorizontalAlignment="Right" 
                 Grid.Row="2" 
                 VerticalAlignment="Top" Width="75" 
                 Click="EditHero_OnClick"
                 Style="{StaticResource MyButtonStyle}" 
                 Foreground="#ffffff" 
-                FontFamily="/Media/#UnifrakturCook" Height="30">
+                FontFamily="/Media/#UnifrakturCook" Height="30" Margin="0,16,5,0">
             <Button.Background>
                 <ImageBrush ImageSource="/RPGHelper.Client;component/Media/gold-border.gif" />
             </Button.Background>
@@ -91,9 +171,9 @@
                 DataContext="{Binding Id}" 
                 Click="DeleteHero_Click" 
                 Grid.Column="1" 
-                HorizontalAlignment="Left" 
-                Margin="322,10,0,0" 
-                Grid.Row="2" VerticalAlignment="Top" 
+                HorizontalAlignment="Right" 
+                Margin="0,16,85,14"
+                Grid.Row="2" VerticalAlignment="Center" 
                 Width="75"
                 Style="{StaticResource MyButtonStyle}" 
                 Foreground="#ffffff" 
@@ -108,9 +188,9 @@
                 DataContext="{Binding Id}" 
                 Click="HeroAddItem_OnClick_Click" 
                 Grid.Column="1" 
-                HorizontalAlignment="Left" 
-                Margin="415,332,0,0" Grid.Row="1" 
-                VerticalAlignment="Top" Width="75"
+                HorizontalAlignment="Right" 
+                Margin="0,0,10,0" Grid.Row="1" 
+                VerticalAlignment="Bottom" Width="75"
                 Style="{StaticResource MyButtonStyle}" 
                 Foreground="#ffffff" 
                 FontFamily="/Media/#UnifrakturCook" Height="30">
