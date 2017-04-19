@@ -194,9 +194,7 @@
     <Resource Include="Media\removeFriendIconSmall.png" />
     <Resource Include="Media\removeFriendIconSmallHover.png" />
     <Resource Include="Media\frame.png" />
-<<<<<<< HEAD
     <Resource Include="Media\gold-border.gif" />
-=======
     <Resource Include="Media\mail-new.png" />
     <Resource Include="Media\mail-opened.png" />
     <Resource Include="Media\power.png" />
@@ -206,7 +204,6 @@
     <Resource Include="Media\rubbish-bin-hover.png" />
     <Resource Include="Media\seen.png" />
     <Resource Include="Media\sent.png" />
->>>>>>> 9e5e62efa639af9e2f63aca36c4abc60c77157b7
     <Content Include="Media\Spirax-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
