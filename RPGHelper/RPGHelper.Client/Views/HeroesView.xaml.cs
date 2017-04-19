@@ -110,6 +110,7 @@ namespace RPGHelper.Client.Views
 
             var heroAddItem = new HeroAddItemView(currentHero);
             heroAddItem.Show();
+            LoadData();
         }
     }
 }

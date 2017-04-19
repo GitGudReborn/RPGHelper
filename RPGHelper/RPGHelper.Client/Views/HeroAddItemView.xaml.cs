@@ -46,12 +46,13 @@ namespace RPGHelper.Client.Views
             {
                 var currentItem = (Item)ItemsBox.SelectionBoxItem;
 
+                var heroFromDb = context.Heroes.FirstOrDefault(h => h.Id == this.currentHero.Id);
                 var itemFromDB = context.Items.FirstOrDefault(i => i.Id == currentItem.Id);
 
                 if (itemFromDB != null)
                 {
 
-                    this.currentHero.Items.Add(itemFromDB);
+                    heroFromDb.Items.Add(itemFromDB);
                     context.SaveChanges();
                     ItemsSourceLoad();
                     stsBarTextBlock.Foreground = new SolidColorBrush(Colors.Green);
