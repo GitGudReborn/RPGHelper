@@ -40,9 +40,11 @@
         </Border>
         <Label Grid.Column="0" Grid.Row="1"
                HorizontalAlignment="Center"
+               HorizontalContentAlignment="Center"
                VerticalAlignment="Top"
                FontSize="25" Height="43" Margin="68,0" Width="120"
-               >Username</Label>
+               Content="{Binding User.Username}"
+               ></Label>
 
         <Label Grid.Column="0" Grid.Row="1"
                HorizontalAlignment="Center"

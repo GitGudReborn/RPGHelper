@@ -31,7 +31,6 @@ namespace RPGHelper.Client
 
         private void SubmitBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(usernameBox.Text + passwordBox.Password);
             if (AuthenticationService.Login(usernameBox.Text, passwordBox.Password))
             {
                 var mainwindow = new MainWindow();

@@ -513,7 +513,7 @@ namespace RPGHelper.Client.Views
 
                 InboxfromTextBlock.Text = message.Sender.Username;
                 InboxContentBox.Text = message.Content;
-                InboxOnTextBlock.Text = message.SentOn.ToString("dd'-'MM'-'yyyy");
+                InboxOnTextBlock.Text = message.SentOn.ToString("dd'-'MM'-'yyyy H:mm");
                 InboxListView.ItemsSource = _messageService.GetReceivedMessages(AuthenticationService.GetCurrentUser().Id);
             }
         }
@@ -565,7 +565,7 @@ namespace RPGHelper.Client.Views
 
                 OutboxfromTextBlock.Text = message.Sender.Username;
                 OutboxContentBox.Text = message.Content;
-                OutboxOnTextBlock.Text = message.SentOn.ToString("dd'-'MM'-'yyyy");
+                OutboxOnTextBlock.Text = message.SentOn.ToString("dd'-'MM'-'yyyy H:mm");
             }
         }
     }
