@@ -61,11 +61,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ItemEdit.xaml.cs">
-      <DependentUpon>ItemEdit.xaml</DependentUpon>
+    <Compile Include="Views\AddNewItemView.xaml.cs">
+      <DependentUpon>AddNewItemView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ItemDetails.xaml.cs">
-      <DependentUpon>ItemDetails.xaml</DependentUpon>
+    <Compile Include="Views\ItemEditView.xaml.cs">
+      <DependentUpon>ItemEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ItemDetailsView.xaml.cs">
+      <DependentUpon>ItemDetailsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -96,11 +99,15 @@
     <Compile Include="Views\ProfileView.xaml.cs">
       <DependentUpon>ProfileView.xaml</DependentUpon>
     </Compile>
-    <Page Include="ItemEdit.xaml">
+    <Page Include="Views\AddNewItemView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ItemDetails.xaml">
+    <Page Include="Views\ItemEditView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ItemDetailsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

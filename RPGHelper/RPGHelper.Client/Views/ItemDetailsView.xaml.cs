@@ -14,15 +14,15 @@ using System.Windows.Shapes;
 using RPGHelper.Client.Views;
 using RPGHelper.Models;
 
-namespace RPGHelper.Client
+namespace RPGHelper.Client.Views
 {
     /// <summary>
-    /// Interaction logic for ItemDetails.xaml
+    /// Interaction logic for ItemDetailsView.xaml
     /// </summary>
-    public partial class ItemEdit : Window
+    public partial class ItemDetailsView : Window
     {
         
-        public ItemEdit()
+        public ItemDetailsView()
         {
             InitializeComponent();
             var currentItem = ItemsView.GetCurrentItem();
@@ -37,11 +37,6 @@ namespace RPGHelper.Client
         private void Close_OnClick(object sender, RoutedEventArgs e)
         {
             Close();
-        }
-
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

@@ -36,7 +36,7 @@ namespace RPGHelper.Data
             modelBuilder.Entity<Item>()
                 .HasRequired(i => i.ItemStats)
                 .WithRequiredPrincipal(i => i.Item);
-
+            
             modelBuilder.Entity<Hero>()
                 .HasMany(h => h.Minions)
                 .WithMany(m => m.Owners)
