@@ -20,18 +20,16 @@ using RPGHelper.Services;
 namespace RPGHelper.Client.Views
 {
     /// <summary>
-    /// Interaction logic for ItemEditView.xaml
+    /// Interaction logic for AddNewItemView.xaml
     /// </summary>
-    public partial class ItemEditView : Window
+    public partial class AddNewItemView : Window
     {
         private Item currentItem;
         private RPGHelperContext context = new RPGHelperContext();
 
-        public ItemEditView()
+        public AddNewItemView()
         {
             InitializeComponent();
-            currentItem = ItemsView.GetCurrentItem();
-            DataContext = currentItem;
         }
 
         private void Move(object sender, MouseButtonEventArgs e)
@@ -48,16 +46,50 @@ namespace RPGHelper.Client.Views
         {
             currentItem = ItemsView.GetCurrentItem();
             string name = Name.Text;
-            decimal cost = decimal.Parse(Cost.Text);
+            decimal cost;
+            bool result = decimal.TryParse(Cost.Text, out cost);
             string description = Description.Text;
             string itemType = ItemType.Text;
             string rarity = Rarity.Text;
             string slot = Slot.Text;
 
-            double attack = double.Parse(Attack.Text);
-            double defence = double.Parse(Defence.Text);
+            double attack;
+            double defence;
+            bool result1 = double.TryParse(Attack.Text, out attack);
+            bool result2 = double.TryParse(Defence.Text,out defence);
 
-            Item item = context.Items.Find(currentItem.Id);
+            if (name == "Enter Name" || name.Length <= 3)
+            {
+                MessageBox.Show("Name must be at least 3 characters.");
+                return;
+            }
+            if (!result || !result1 || !result2 || attack <= 0 || defence <= 0 || cost <= 0 )
+            {
+                MessageBox.Show("Invalid number.");
+                return;
+            }
+
+            if(itemType == "" || (itemType != "Weapon" && itemType != "Consumable" && itemType != "Utility" && itemType != "Armor"))
+            {
+                MessageBox.Show("Invalid Item Type.");
+                return;
+            }
+
+            if (rarity != "Common" && rarity != "Uncommon" && rarity != "Rare" && 
+                rarity != "Mythical" && rarity != "Legendary" && rarity != "Ancient" 
+                && rarity != "Immortal" && rarity != "Arcana")
+            {
+                MessageBox.Show("Invalid Rarity");
+                return;
+            }
+
+            if (slot != "Head" && slot!="Torso" && slot!="Hands" && slot!="Legs" 
+                && slot!="Feet" && slot!= "Backpack" && slot!="Weapon")
+            {
+                MessageBox.Show("Invalid Slot");
+                return;
+            }
+            Item item = new Item();
 
             item.Cost = cost;
             item.Name = name;
@@ -66,17 +98,13 @@ namespace RPGHelper.Client.Views
             item.Slot = (Slot) Enum.Parse(typeof(Slot), slot);
             item.Rarity = (Rarity) Enum.Parse(typeof(Rarity), rarity);
 
-            ItemStats itemStat = context.ItemStatistics.FirstOrDefault(st=> st.Item.Id==currentItem.Id);
+            ItemStats itemStat = new ItemStats();
             itemStat.Attack = attack;
             itemStat.Defence = defence;
-            item.ItemStats = itemStat;
-            var result = MessageBox.Show("Are you sure you want to edit this item?", "Question",
-                    MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (result == MessageBoxResult.Yes)
-            {
-                context.SaveChanges();
-            }
-                
+
+            //context add items,itemstats,save changes
+            ItemService.SaveItem(item, itemStat);
+            MessageBox.Show("Item added successfully.");
             ItemsView.items = ItemService.GetAllItems();
             this.Close();
         }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,11 +12,11 @@ namespace RPGHelper.Services
 {
     public class ItemService
     {
-        public static  List<Item> GetAllItems()
+        public static ObservableCollection<Item> GetAllItems()
         {
             using (var context = new RPGHelperContext())
             {
-                return context.Items.ToList();
+                return new ObservableCollection<Item>(context.Items);
             }
         }
 
@@ -71,5 +73,18 @@ namespace RPGHelper.Services
            context.SaveChanges();
            
         }
+
+        public static void SaveItem(Item item, ItemStats itemStat)
+        {
+            using (var context = new RPGHelperContext())
+            {
+                itemStat.Item = item;
+                context.ItemStatistics.Add(itemStat);
+                context.Items.Add(item);
+                context.SaveChanges();
+            }
+        }
+
+       
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace RPGHelper.Client.Views
     /// </summary>
     public partial class ItemsView : UserControl
     {
-        public static List<Item> items = new List<Item>();
+        public static ObservableCollection<Item> items = new ObservableCollection<Item>();
         private static Item currentItem = new Item();
 
         public ItemsView()
@@ -71,9 +72,14 @@ namespace RPGHelper.Client.Views
                 ItemService.Remove(currentItem);
                 MessageBox.Show("Item removed successfully!");
             }
-
-
+            
             DataContext = ItemService.GetAllItems();
          }
+
+        private void AddNewItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            var window = new AddNewItemView();
+            window.Show();
+        }
     }
 }
