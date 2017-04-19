@@ -35,5 +35,9 @@ namespace RPGHelper.Models
 
         [Required]
         public virtual User Recipient { get; set; }
+
+        public bool IsRead { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

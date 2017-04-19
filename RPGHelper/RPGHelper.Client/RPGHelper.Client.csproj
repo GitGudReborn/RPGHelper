@@ -187,12 +187,23 @@
     <Resource Include="Media\removeFriendIconSmall.png" />
     <Resource Include="Media\removeFriendIconSmallHover.png" />
     <Resource Include="Media\frame.png" />
+    <Resource Include="Media\mail-new.png" />
+    <Resource Include="Media\mail-opened.png" />
+    <Resource Include="Media\power.png" />
+    <Resource Include="Media\envelope.png" />
+    <Resource Include="Media\message.png" />
+    <Resource Include="Media\rubbish-bin.png" />
+    <Resource Include="Media\rubbish-bin-hover.png" />
+    <Resource Include="Media\seen.png" />
+    <Resource Include="Media\sent.png" />
     <Content Include="Media\Spirax-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Media\TrashIt_icon_trnspt.png" />
     <Resource Include="Media\border.png" />
     <Resource Include="Media\swirl-red-clip-art.png" />
+    <Resource Include="Media\star-round.png" />
+    <Resource Include="Media\star-half-empty.png" />
     <Content Include="Media\UnifrakturCook-Bold.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
