@@ -182,9 +182,210 @@
                     </Grid>
                 </TabItem>
                 <TabItem Name="InboxTab" Header="Inbox">
-
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="8*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15*"/>
+                            <ColumnDefinition Width="10*"/>
+                        </Grid.ColumnDefinitions>
+                        <ListView Margin="5" Name="InboxListView" Grid.Column="0" Grid.ColumnSpan="2">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Subject" Width="120">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Subject}" FontStyle="Italic" MouseLeftButtonDown="MsgSubject_DoubleClick">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="{x:Type TextBlock}">
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding IsRead}" Value="True">
+                                                                    <Setter Property="FontWeight" Value="Light"/>
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding IsRead}" Value="False">
+                                                                    <Setter Property="FontWeight" Value="Bold"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header="From" Width="80">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Sender.Username}" FontWeight="DemiBold" MouseLeftButtonDown="MsgSubject_DoubleClick"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header="Date" Width="70">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding SentOn, StringFormat=dd-MM-yyyy}" FontWeight="Light"  MouseLeftButtonDown="MsgSubject_DoubleClick"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="30">
+                                        <GridViewColumn.Header>
+                                            <Image Source="/RPGHelper.Client;component/Media/star-half-empty.png" MaxHeight="16" MaxWidth="16"/>
+                                        </GridViewColumn.Header>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Image MaxWidth="16" MaxHeight="16">
+                                                    <Image.Style>
+                                                        <Style TargetType="{x:Type Image}">
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding IsRead}" Value="False">
+                                                                    <Setter Property="Source" Value="/RPGHelper.Client;component/Media/envelope.png"/>
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding IsRead}" Value="True">
+                                                                    <Setter Property="Source" Value="/RPGHelper.Client;component/Media/message.png"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Image.Style>
+                                                </Image>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="30">
+                                        <GridViewColumn.Header>
+                                            <Image Source="/RPGHelper.Client;component/Media/power.png" MaxHeight="16" MaxWidth="16"/>
+                                        </GridViewColumn.Header>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Click="DeleteMsgFromInboxList">
+                                                    <Button.Template>
+                                                        <ControlTemplate>
+                                                            <Image MaxHeight="16" MaxWidth="16">
+                                                                <Image.Style>
+                                                                    <Style TargetType="{x:Type Image}">
+                                                                        <Setter Property="Source" Value="/RPGHelper.Client;component/Media/rubbish-bin.png"/>
+                                                                        <Style.Triggers>
+                                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                                <Setter Property="Source" Value="/RPGHelper.Client;component/Media/rubbish-bin-hover.png"/>
+                                                                            </Trigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </Image.Style>
+                                                            </Image>
+                                                        </ControlTemplate>
+                                                    </Button.Template>
+                                                </Button>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <Label Grid.Column="0" Grid.Row="1" VerticalContentAlignment="Center" Padding="5,0,0,0" FontSize="13" FontWeight="DemiBold">From:</Label>
+                        <TextBlock Name="InboxfromTextBlock"  Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Padding="42,0,0,0" FontStyle="Italic" FontSize="13"/>
+                        <Label Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Padding="5,0,0,0" FontSize="13" FontWeight="DemiBold">On:</Label>
+                        <TextBlock Name="InboxOnTextBlock"  Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Padding="27,0,0,0" FontStyle="Italic" FontSize="13"/>
+                        <Separator Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Top" Margin="5,0,5,0"/>
+                        <TextBlock Name="InboxContentBox" Margin="5" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="WhiteSmoke" TextWrapping="Wrap"/>
+                        <Button Name="InboxDeleteCurrentMsgBtn" Grid.Column="1" Grid.Row="3" Content="Delete" Margin="5" Click="InboxDeleteCurrentMsgBtn_Click"/>
+                    </Grid>
                 </TabItem>
                 <TabItem Name="OutboxTab" Header="Outbox">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="8*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15*"/>
+                            <ColumnDefinition Width="10*"/>
+                        </Grid.ColumnDefinitions>
+                        <ListView Margin="5" Name="OutboxListView" Grid.Column="0" Grid.ColumnSpan="2">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Subject" Width="120">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Subject}" FontStyle="Italic" MouseLeftButtonDown="MsgSubjectOutbox_DoubleClick">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="{x:Type TextBlock}">
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding IsRead}" Value="True">
+                                                                    <Setter Property="FontWeight" Value="Light"/>
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding IsRead}" Value="False">
+                                                                    <Setter Property="FontWeight" Value="Bold"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header="To" Width="90">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Recipient.Username}" FontWeight="DemiBold" MouseLeftButtonDown="MsgSubjectOutbox_DoubleClick"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header="Date" Width="80">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding SentOn, StringFormat=dd-MM-yyyy}" FontWeight="Light"  MouseLeftButtonDown="MsgSubjectOutbox_DoubleClick"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="30">
+                                        <GridViewColumn.Header>
+                                            <Image Source="/RPGHelper.Client;component/Media/star-half-empty.png" MaxHeight="16" MaxWidth="16"/>
+                                        </GridViewColumn.Header>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Image MaxWidth="16" MaxHeight="16">
+                                                    <Image.Style>
+                                                        <Style TargetType="{x:Type Image}">
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding IsRead}" Value="False">
+                                                                    <Setter Property="Source" Value="/RPGHelper.Client;component/Media/sent.png"/>
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding IsRead}" Value="True">
+                                                                    <Setter Property="Source" Value="/RPGHelper.Client;component/Media/seen.png"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Image.Style>
+                                                </Image>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <Label Grid.Column="0" Grid.Row="1" VerticalContentAlignment="Center" Padding="5,0,0,0" FontSize="13" FontWeight="DemiBold">To:</Label>
+                        <TextBlock Name="OutboxfromTextBlock"  Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Padding="25,0,0,0" FontStyle="Italic" FontSize="13"/>
+                        <Label Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Padding="5,0,0,0" FontSize="13" FontWeight="DemiBold">On:</Label>
+                        <TextBlock Name="OutboxOnTextBlock"  Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Padding="27,0,0,0" FontStyle="Italic" FontSize="13"/>
+                        <Separator Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Top" Margin="5,0,5,0"/>
+                        <TextBlock Name="OutboxContentBox" Margin="5" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="WhiteSmoke" TextWrapping="Wrap"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Name="SendMessageTab" Header="Send">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="10*"/>

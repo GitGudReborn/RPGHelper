@@ -32,6 +32,7 @@ namespace RPGHelper.Client.Views
         private UserService _userService = new UserService();
         private MessageService _messageService = new MessageService();
         private static string foundUsername = "";
+        private static int currentlyOpenedInboxMsgId = -1;
         public ProfileView()
         {
             InitializeComponent();
@@ -56,6 +57,9 @@ namespace RPGHelper.Client.Views
 
             lvFriends.ItemsSource = _userService.GetFriends(AuthenticationService.GetCurrentUser().Id);
             friendsCombobox.ItemsSource = _userService.GetFriendsUsernames(AuthenticationService.GetCurrentUser().Id, nameFilter.Text);
+
+            InboxListView.ItemsSource = _messageService.GetReceivedMessages(AuthenticationService.GetCurrentUser().Id);
+            OutboxListView.ItemsSource = _messageService.GetSentMessages(AuthenticationService.GetCurrentUser().Id);
         }
 
         private void OpenBtn_Click(object sender, RoutedEventArgs e)
@@ -349,6 +353,7 @@ namespace RPGHelper.Client.Views
             searchBox.Focus();
 
             lvFriends.ItemsSource = _userService.GetFriends(AuthenticationService.GetCurrentUser().Id);
+            friendsCombobox.ItemsSource = _userService.GetFriendsUsernames(AuthenticationService.GetCurrentUser().Id, nameFilter.Text);
         }
 
         private void SearchBox_KeyDown(object sender, KeyEventArgs e)
@@ -377,6 +382,7 @@ namespace RPGHelper.Client.Views
             searchStatusText.Foreground = new SolidColorBrush(Colors.Blue);
             searchStatusText.Text = $"User ({username}) removed from friends.";
             lvFriends.ItemsSource = _userService.GetFriends(AuthenticationService.GetCurrentUser().Id);
+            friendsCombobox.ItemsSource = _userService.GetFriendsUsernames(AuthenticationService.GetCurrentUser().Id, nameFilter.Text);
         }
 
         private void ApplyFilterBtn_Click(object sender, RoutedEventArgs e)
@@ -426,11 +432,28 @@ namespace RPGHelper.Client.Views
                 return;
             }
 
+            if (msgSubjectBox.Text.Length > 25)
+            {
+                outboxStatus.Text = $"Message subject lengt exceeded!";
+                msgSubjectBox.Text = msgSubjectBox.Text.Substring(0, 25);
+                msgSubjectBox.Focus();
+                return;
+            }
+
+            if (msgContentBox.Text.Length > 500)
+            {
+                outboxStatus.Text = $"Message content length exceeded!";
+                msgContentBox.Text = msgContentBox.Text.Substring(0, 500);
+                msgContentBox.Focus();
+                return;
+            }
+
             _messageService.SendMessage(usernameSelected, msgSubjectBox.Text, msgContentBox.Text);
             outboxStatus.Foreground = new SolidColorBrush(Colors.Green);
             outboxStatus.Text = $"Message to {usernameSelected} sent!";
             msgSubjectBox.Text = string.Empty;
             msgContentBox.Text = string.Empty;
+            OutboxListView.ItemsSource = _messageService.GetSentMessages(AuthenticationService.GetCurrentUser().Id);
         }
 
         private void NameFilter_KeyDown(object sender, KeyEventArgs e)
@@ -474,6 +497,75 @@ namespace RPGHelper.Client.Views
             {
                 outboxStatus.Foreground = new SolidColorBrush(Colors.Blue);
                 outboxStatus.Text = $"Content characters left: {500 - msgContentBox.Text.Length}";
+            }
+        }
+
+        private void MsgSubject_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                Message msg = InboxListView.SelectedItem as Message;
+                int msgId = msg.Id;
+
+                currentlyOpenedInboxMsgId = msgId;
+
+                Message message = _messageService.GetMessageById(msgId);
+
+                InboxfromTextBlock.Text = message.Sender.Username;
+                InboxContentBox.Text = message.Content;
+                InboxOnTextBlock.Text = message.SentOn.ToString("dd'-'MM'-'yyyy");
+                InboxListView.ItemsSource = _messageService.GetReceivedMessages(AuthenticationService.GetCurrentUser().Id);
+            }
+        }
+
+        private void DeleteMsgFromInboxList(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            Message msg = button.DataContext as Message;
+            int msgId = msg.Id;
+
+            _messageService.MarkAsDeleted(msgId);
+
+            if (currentlyOpenedInboxMsgId != -1)
+            {
+                if (currentlyOpenedInboxMsgId == msgId)
+                {
+                    InboxfromTextBlock.Text = string.Empty;
+                    InboxOnTextBlock.Text = string.Empty;
+                    InboxContentBox.Text = string.Empty;
+                    currentlyOpenedInboxMsgId = -1;
+                }
+            }
+            InboxListView.ItemsSource = _messageService.GetReceivedMessages(AuthenticationService.GetCurrentUser().Id);
+        }
+
+        private void InboxDeleteCurrentMsgBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentlyOpenedInboxMsgId != -1)
+            {
+
+                InboxfromTextBlock.Text = string.Empty;
+                InboxOnTextBlock.Text = string.Empty;
+                InboxContentBox.Text = string.Empty;
+                _messageService.MarkAsDeleted(currentlyOpenedInboxMsgId);
+                currentlyOpenedInboxMsgId = -1;
+
+                InboxListView.ItemsSource = _messageService.GetReceivedMessages(AuthenticationService.GetCurrentUser().Id);
+            }
+        }
+
+        private void MsgSubjectOutbox_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                Message msg = OutboxListView.SelectedItem as Message;
+                int msgId = msg.Id;
+
+                Message message = _messageService.GetMessageById(msgId);
+
+                OutboxfromTextBlock.Text = message.Sender.Username;
+                OutboxContentBox.Text = message.Content;
+                OutboxOnTextBlock.Text = message.SentOn.ToString("dd'-'MM'-'yyyy");
             }
         }
     }
