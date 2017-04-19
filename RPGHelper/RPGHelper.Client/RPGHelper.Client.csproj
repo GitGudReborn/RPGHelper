@@ -64,6 +64,9 @@
     <Compile Include="Views\AddNewItemView.xaml.cs">
       <DependentUpon>AddNewItemView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\HeroAddItemView.xaml.cs">
+      <DependentUpon>HeroAddItemView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ItemEditView.xaml.cs">
       <DependentUpon>ItemEditView.xaml</DependentUpon>
     </Compile>
@@ -102,6 +105,10 @@
     <Page Include="Views\AddNewItemView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\HeroAddItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ItemEditView.xaml">
       <Generator>MSBuild:Compile</Generator>

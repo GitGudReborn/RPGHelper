@@ -100,5 +100,16 @@ namespace RPGHelper.Client.Views
                 MessageBox.Show("This Hero is not added yet!");
             }
         }
+
+        private void HeroAddItem_OnClick_Click(object sender, RoutedEventArgs e)
+        {
+            var context = new RPGHelperContext();
+            Button b = sender as Button;
+            var currentHeroId = (int)b.DataContext;
+            var currentHero = context.Heroes.FirstOrDefault(h => h.Id == currentHeroId);
+
+            var heroAddItem = new HeroAddItemView(currentHero);
+            heroAddItem.Show();
+        }
     }
 }
