@@ -41,21 +41,29 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <Label Padding="0" Grid.Row="0" Foreground="WhiteSmoke" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">Username</Label>
+                <Label Padding="0" Grid.Row="0" Style="{StaticResource ColorText}" Foreground="WhiteSmoke" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">Username</Label>
                 <TextBox Name="usernameBox" FontSize="15" Style="{StaticResource TextBoxStyle}" Grid.Row="1" PreviewKeyDown="UsernameAndPasswordBox_KeyDown"/>
-                <Label Padding="0" Grid.Row="2" Foreground="WhiteSmoke" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">Password</Label>
+                <Label Padding="0" Grid.Row="2" Style="{StaticResource ColorText}" Foreground="WhiteSmoke" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">Password</Label>
                 <PasswordBox Name="passwordBox" Style="{StaticResource PasswordBoxStyle}" Grid.Row="3" PreviewKeyDown="UsernameAndPasswordBox_KeyDown"/>
-                <Label Padding="0" Grid.Row="4" Foreground="WhiteSmoke" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">Repeat Password</Label>
+                <Label Padding="0" Grid.Row="4" Style="{StaticResource ColorText}" Foreground="WhiteSmoke" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">Repeat Password</Label>
                 <PasswordBox Name="repeatpasswordBox" Style="{StaticResource PasswordBoxStyle}" Grid.Row="5" PreviewKeyDown="UsernameAndPasswordBox_KeyDown"/>
 
-                <Button Grid.Row="7" Margin="50,10,50,-10" Content="Register" Click="Register_Click"/>
+                <Button Grid.Row="7" Margin="50,10,50,-10" Content="Register" Click="Register_Click" Style="{StaticResource MyButtonStyle}" FontFamily="Media/#UnifrakturCook" Foreground="WhiteSmoke">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Media/gold-border.gif"></ImageBrush>
+                    </Button.Background>
+                </Button>
                 <StatusBar Name="statusBar" HorizontalAlignment="Center" Height="23" Margin="0,4,0,0" Grid.Row="6" VerticalAlignment="Center" Width="213">
-                    <StatusBarItem HorizontalContentAlignment="Center" Width="156">
+                    <StatusBarItem HorizontalContentAlignment="Center" Width="205">
                         <TextBlock Name="statusText" VerticalAlignment="Center" TextAlignment="Center"></TextBlock>
                     </StatusBarItem>
                 </StatusBar>
             </Grid>
         </DockPanel>
-        <Button Content="Cancel" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center" Click="Cancel_Click"/>
+        <Button Content="Cancel" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center" Click="Cancel_Click" Style="{StaticResource MyButtonStyle}" FontFamily="Media/#UnifrakturCook" Foreground="WhiteSmoke">
+            <Button.Background>
+                <ImageBrush ImageSource="Media/gold-border.gif"></ImageBrush>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
