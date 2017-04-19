@@ -62,9 +62,9 @@
             <TextBox x:Name="Name" Text="{Binding Name}" Style="{StaticResource TextBoxStyle}"/>
             <TextBox x:Name="Cost" Text="{Binding Cost}" Style="{StaticResource TextBoxStyle}" />
             <TextBox x:Name="Description" Text="{Binding Description}" Style="{StaticResource TextBoxStyle}" />
-            <TextBox x:Name="ItemType" Text="{Binding ItemType}" Style="{StaticResource TextBoxStyle}" />
-            <TextBox x:Name="Rarity" Text="{Binding Rarity}" Style="{StaticResource TextBoxStyle}" />
-            <TextBox x:Name="Slot" Text="{Binding Slot}" Style="{StaticResource TextBoxStyle}" />
+            <TextBox x:Name="ItemType" Text="{Binding ItemType}" IsEnabled="False" Style="{StaticResource TextBoxStyle}" />
+            <TextBox x:Name="Rarity" Text="{Binding Rarity}" IsEnabled="False" Style="{StaticResource TextBoxStyle}" />
+            <TextBox x:Name="Slot" Text="{Binding Slot}" IsEnabled="False" Style="{StaticResource TextBoxStyle}" />
         </StackPanel>
         <Label Grid.Row="2" Grid.Column="1"
                HorizontalContentAlignment="Center"

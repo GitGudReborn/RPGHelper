@@ -59,9 +59,9 @@
             <TextBox x:Name="Name" Text="Enter Name" Style="{StaticResource TextBoxStyle}"/>
             <TextBox x:Name="Cost" Text="0" Style="{StaticResource TextBoxStyle}" />
             <TextBox x:Name="Description" Text="Enter Description" Style="{StaticResource TextBoxStyle}" />
-            <TextBox x:Name="ItemType" Text="Select Item Type" Style="{StaticResource TextBoxStyle}" />
-            <TextBox x:Name="Rarity" Text="Select Rarity" Style="{StaticResource TextBoxStyle}" />
-            <TextBox x:Name="Slot" Text="Select Slot" Style="{StaticResource TextBoxStyle}" />
+            <TextBox x:Name="ItemType" Text="Select Item Type"  IsEnabled="False" Style="{StaticResource TextBoxStyle}" />
+            <TextBox x:Name="Rarity" Text="Select Rarity"  IsEnabled="False" Style="{StaticResource TextBoxStyle}" />
+            <TextBox x:Name="Slot" Text="Select Slot" IsEnabled="False"  Style="{StaticResource TextBoxStyle}" />
         </StackPanel>
         <Label Grid.Row="2" Grid.Column="1"
                HorizontalContentAlignment="Center"
