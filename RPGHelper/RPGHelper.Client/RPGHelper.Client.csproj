@@ -81,7 +81,7 @@
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\HeroesViewModel.cs" />
-    <Compile Include="ViewModels\ImportExportViewModel.cs" />
+    <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\ItemsViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="Views\AddHeroView.xaml.cs">
@@ -93,8 +93,8 @@
     <Compile Include="Views\HeroesView.xaml.cs">
       <DependentUpon>HeroesView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ImportExportView.xaml.cs">
-      <DependentUpon>ImportExportView.xaml</DependentUpon>
+    <Compile Include="Views\AboutView.xaml.cs">
+      <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ItemsView.xaml.cs">
       <DependentUpon>ItemsView.xaml</DependentUpon>
@@ -150,7 +150,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ImportExportView.xaml">
+    <Page Include="Views\AboutView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

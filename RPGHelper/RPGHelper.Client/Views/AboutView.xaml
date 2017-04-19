@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="RPGHelper.Client.Views.AboutView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RPGHelper.Client.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="480" d:DesignWidth="640">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/RPGHelper.Client;component/Media/images.jpg"/>
+        </Grid.Background>
+        <Viewbox Margin="120,0,120,0">
+            <StackPanel Orientation="Vertical" Width="400">
+                <TextBlock Style="{StaticResource TextBlockStyle}" 
+                   FontSize="20" 
+                   TextWrapping="Wrap" 
+                   Foreground="WhiteSmoke">
+                    RPGHelper is a simple tool that lets you simplify your board game needs.
+                </TextBlock>
+                <TextBlock Style="{StaticResource TextBlockStyle}" 
+                   FontSize="20" 
+                   TextWrapping="Wrap" 
+                   Foreground="WhiteSmoke">
+                It helps you organize your heroes and items. It allows for easy communication with other users.
+        RPGHelper offers even more features so just give it a try and discover that for yourself. :)
+                </TextBlock>
+                <TextBlock Style="{StaticResource TextBlockStyle}" 
+                   FontSize="20" 
+                   TextWrapping="Wrap" 
+                   Foreground="WhiteSmoke">
+                RPGHelper was made as a team Project for the SoftUni course "Database Advanced With Entity Framework".
+                </TextBlock>
+                <TextBlock Style="{StaticResource TextBlockStyle}" 
+                   FontSize="25" 
+                   TextWrapping="Wrap" 
+                   Foreground="WhiteSmoke">
+                Contributors:
+                </TextBlock>
+                <TextBlock Style="{StaticResource TextBlockStyle}" 
+                   FontSize="20" 
+                   TextWrapping="Wrap" 
+                   Foreground="WhiteSmoke">
+                Stoyan Grigorov - https://github.com/stwel
+Maria Stoeva - https://github.com/marialbst
+Jean Petrov - https://github.com/JeanPetrov
+                </TextBlock>
+            </StackPanel>
+        </Viewbox>
+    </Grid>
+</UserControl>

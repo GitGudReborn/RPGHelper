@@ -7,7 +7,7 @@
         xmlns:views="clr-namespace:RPGHelper.Client.Views"
         xmlns:viewModels="clr-namespace:RPGHelper.Client.ViewModels"
         mc:Ignorable="d"
-        Title="RPGHelper" Height="480" Width="640" Icon="Media/RPG_Icon.png">
+        Title="RPGHelper" Height="480" Width="640" Icon="Media/RPG_Icon.png" WindowStyle="ThreeDBorderWindow">
     <Window.Resources>
        <DataTemplate x:Name="ProfileViewTemplate" DataType="{x:Type viewModels:ProfileViewModel}">
             <views:ProfileView DataContext="{Binding}"/>
@@ -18,8 +18,8 @@
         <DataTemplate x:Name="ItemsTemplate" DataType="{x:Type viewModels:ItemsViewModel}">
             <views:ItemsView DataContext="{Binding}"/>
         </DataTemplate>
-        <DataTemplate x:Name="ImportExportTemplate" DataType="{x:Type viewModels:ImportExportViewModel}">
-            <views:ImportExportView DataContext="{Binding}"/>
+        <DataTemplate x:Name="AboutTemplate" DataType="{x:Type viewModels:AboutViewModel}">
+            <views:AboutView DataContext="{Binding}"/>
         </DataTemplate>
     </Window.Resources>
     <Grid>
@@ -73,11 +73,11 @@
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="8*"/>
                 </Grid.RowDefinitions>
-                <Button Background="#AA9300" Style="{StaticResource FontTabs}" Content="Profile" Grid.RowSpan="2" Grid.Column="1" Grid.Row="2" Click="ProfileBtn_Click"/>
-                <Button Background="Yellow" Style="{StaticResource FontTabs}" Content="Heroes" Grid.RowSpan="2"  Grid.Column="3" Grid.Row="2" Click="HeroesBtn_Click"/>
-                <Button Background="Green" Style="{StaticResource FontTabs}" Content="Items" Grid.RowSpan="2" Grid.Column="5" Grid.Row="2" Click="ItemsBtn_Click"/>
-                <Button Background="Purple" Style="{StaticResource FontTabs}" Content="About" Grid.RowSpan="2" Grid.Column="7" Grid.Row="2" Click="ImportExportBtn_Click"/>
-                <Button Background="ForestGreen" Style="{StaticResource FontTabs}" Content="Logout" Grid.RowSpan="2" Grid.Column="9" Grid.Row="2" Click="LogoutBtn_Click"/>
+                <Button Style="{StaticResource FontTabs}" Content="Profile" Grid.RowSpan="2" Grid.Column="1" Grid.Row="2" Click="ProfileBtn_Click"/>
+                <Button Style="{StaticResource FontTabs}" Content="Heroes" Grid.RowSpan="2"  Grid.Column="3" Grid.Row="2" Click="HeroesBtn_Click"/>
+                <Button Style="{StaticResource FontTabs}" Content="Items" Grid.RowSpan="2" Grid.Column="5" Grid.Row="2" Click="ItemsBtn_Click"/>
+                <Button Style="{StaticResource FontTabs}" Content="About" Grid.RowSpan="2" Grid.Column="7" Grid.Row="2" Click="ImportExportBtn_Click"/>
+                <Button Style="{StaticResource FontTabs}" Content="Logout" Grid.RowSpan="2" Grid.Column="9" Grid.Row="2" Click="LogoutBtn_Click"/>
             </Grid>
         </DockPanel>
 

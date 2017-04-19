@@ -6,7 +6,10 @@
              xmlns:local="clr-namespace:RPGHelper.Client.Views"
              mc:Ignorable="d" 
              d:DesignHeight="480" d:DesignWidth="640">
-    <Grid Background="Yellow">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/RPGHelper.Client;component/Media/images.jpg"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="44*"/>
             <RowDefinition Height="373*"/>
@@ -19,7 +22,7 @@
 
         <TextBlock x:Name="textBox" Text="All Heroes" Grid.Row="0" Grid.Column="0" FontSize="22" FontWeight="Bold" TextAlignment="Center" Background="Coral"/>
 
-        <ListView x:Name="HeroesList" FontSize="18" Grid.Row="1" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True">
+        <ListView x:Name="HeroesList" FontSize="18" Grid.Row="1" ItemsSource="{Binding}" Style="{StaticResource ListViewStyle}" IsSynchronizedWithCurrentItem="True">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
@@ -33,33 +36,88 @@
                FontFamily="KoreanFont,georgia,serif" FontSize="24"/>
         <StackPanel Grid.Row="1" Grid.Column="1">
 
-            <TextBlock Text="{Binding Path=HeroStats.Hp , StringFormat='Hp: {0}'}" FontFamily="arial, helvetica, sans-serif" FontSize="24" HorizontalAlignment="Left" Margin="20,0,0,0" Padding="20" ></TextBlock>
+            <TextBlock Text="{Binding Path=HeroStats.Hp , StringFormat='Hp: {0}'}" Style="{StaticResource TextBlockStyle}" FontSize="24" HorizontalAlignment="Left" Margin="5,0,0,0" Padding="5" Width="40" ></TextBlock>
 
-            <TextBlock Text="{Binding Path=HeroStats.Mana, StringFormat='Mana: {0}'}" FontFamily="arial, helvetica, sans-serif" FontSize="24" HorizontalAlignment="Left" Margin="20,0,0,0" Padding="20"></TextBlock>
+            <TextBlock Text="{Binding Path=HeroStats.Mana, StringFormat='Mana: {0}'}" Style="{StaticResource TextBlockStyle}" FontSize="24" HorizontalAlignment="Left" Margin="5,0,0,0" Padding="20" Height="35"></TextBlock>
 
-            <TextBlock Text="{Binding Path=HeroStats.AttackPower, StringFormat='AttackPower: {0}'}" FontFamily="arial, helvetica, sans-serif" FontSize="24" HorizontalAlignment="Left" Margin="20,0,0,0" Padding="20"></TextBlock>
+            <TextBlock Text="{Binding Path=HeroStats.AttackPower, StringFormat='AttackPower: {0}'}" Style="{StaticResource TextBlockStyle}" FontSize="24" HorizontalAlignment="Left" Margin="5,0,0,0" Padding="20" Height="39"></TextBlock>
 
-            <TextBlock Text="{Binding Path=HeroStats.Defence, StringFormat='Defence: {0}'}" FontFamily="arial, helvetica, sans-serif" FontSize="24" HorizontalAlignment="Left" Margin="20,0,0,0" Padding="20"></TextBlock>
-
-            <ListView x:Name="test" FontSize="18" ItemsSource="{Binding Items}" IsSynchronizedWithCurrentItem="True">
+            <TextBlock Text="{Binding Path=HeroStats.Defence, StringFormat='Defence: {0}'}" 
+                       Style="{StaticResource TextBlockStyle}" FontSize="24" HorizontalAlignment="Left" Margin="5,0,0,0" Padding="20" Height="46"></TextBlock>
+            <ListView x:Name="test" Style="{StaticResource ListViewStyle}" FontSize="18" ItemsSource="{Binding Items}" IsSynchronizedWithCurrentItem="True">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
-                        <GridViewColumn Header="Gold" DisplayMemberBinding="{Binding Cost}"></GridViewColumn>
-                        <GridViewColumn Header="Attack" DisplayMemberBinding="{Binding ItemStats.Attack}"></GridViewColumn>
-                        <GridViewColumn Header="Defence" DisplayMemberBinding="{Binding ItemStats.Defence}"></GridViewColumn>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Gold" DisplayMemberBinding="{Binding Cost}"/>
+                        <GridViewColumn Header="Attack" DisplayMemberBinding="{Binding ItemStats.Attack}"/>
+                        <GridViewColumn Header="Defence" DisplayMemberBinding="{Binding ItemStats.Defence}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
         </StackPanel>
 
-        <Button x:Name="AddHero" Content="Add New Hero" FontSize="18" Click="AddHero_Click" Grid.Row="2" ></Button>
+        <Button x:Name="AddHero" 
+                Content="Add New Hero" 
+                FontSize="18" 
+                Click="AddHero_Click" 
+                Grid.Row="2" Grid.Column="0" 
+                Style="{StaticResource MyButtonStyle}" 
+                Foreground="#ffffff" 
+                FontFamily="/Media/#UnifrakturCook">
+            <Button.Background>
+                <ImageBrush ImageSource="/RPGHelper.Client;component/Media/gold-border.gif" />
+            </Button.Background>
+        </Button>
 
-        <Button x:Name="EditHero" Content="Edit" Grid.Column="1" DataContext="{Binding Id}" HorizontalAlignment="Left" Margin="415,33,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Click="EditHero_OnClick"></Button>
+        <Button x:Name="EditHero" 
+                Content="Edit" 
+                Grid.Column="1" 
+                DataContext="{Binding Id}" 
+                HorizontalAlignment="Left" 
+                Margin="415,10,0,0" 
+                Grid.Row="2" 
+                VerticalAlignment="Top" Width="75" 
+                Click="EditHero_OnClick"
+                Style="{StaticResource MyButtonStyle}" 
+                Foreground="#ffffff" 
+                FontFamily="/Media/#UnifrakturCook" Height="30">
+            <Button.Background>
+                <ImageBrush ImageSource="/RPGHelper.Client;component/Media/gold-border.gif" />
+            </Button.Background>
+        </Button>
 
-        <Button x:Name="DeleteHero" Content="Delete" DataContext="{Binding Id}" Click="DeleteHero_Click" Grid.Column="1" HorizontalAlignment="Left" Margin="322,33,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="DeleteHero" 
+                Content="Delete" 
+                DataContext="{Binding Id}" 
+                Click="DeleteHero_Click" 
+                Grid.Column="1" 
+                HorizontalAlignment="Left" 
+                Margin="322,10,0,0" 
+                Grid.Row="2" VerticalAlignment="Top" 
+                Width="75"
+                Style="{StaticResource MyButtonStyle}" 
+                Foreground="#ffffff" 
+                FontFamily="/Media/#UnifrakturCook" Height="30">
+            <Button.Background>
+                <ImageBrush ImageSource="/RPGHelper.Client;component/Media/gold-border.gif" />
+            </Button.Background>
+        </Button>
 
-        <Button x:Name="HeroAddItem" Content="Add Item" DataContext="{Binding Id}" Click="HeroAddItem_OnClick_Click" Grid.Column="1" HorizontalAlignment="Left" Margin="272,329,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="HeroAddItem" 
+                Content="Add Item" 
+                DataContext="{Binding Id}" 
+                Click="HeroAddItem_OnClick_Click" 
+                Grid.Column="1" 
+                HorizontalAlignment="Left" 
+                Margin="415,332,0,0" Grid.Row="1" 
+                VerticalAlignment="Top" Width="75"
+                Style="{StaticResource MyButtonStyle}" 
+                Foreground="#ffffff" 
+                FontFamily="/Media/#UnifrakturCook" Height="30">
+            <Button.Background>
+                <ImageBrush ImageSource="/RPGHelper.Client;component/Media/gold-border.gif" />
+            </Button.Background>
+        </Button>
 
     </Grid>
 </UserControl>

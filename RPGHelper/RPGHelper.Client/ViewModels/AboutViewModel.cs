@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPGHelper.Client.ViewModels
 {
-    public class ImportExportViewModel : ObservableObject
+    public class AboutViewModel : ObservableObject
     {
         
     }

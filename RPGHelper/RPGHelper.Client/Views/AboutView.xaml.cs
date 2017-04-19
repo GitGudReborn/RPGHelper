@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace RPGHelper.Client.Views
 {
     /// <summary>
-    /// Interaction logic for ImportExportView.xaml
+    /// Interaction logic for AboutView.xaml
     /// </summary>
-    public partial class ImportExportView : UserControl
+    public partial class AboutView : UserControl
     {
-        public ImportExportView()
+        public AboutView()
         {
             InitializeComponent();
         }

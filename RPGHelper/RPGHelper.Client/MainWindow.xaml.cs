@@ -78,7 +78,7 @@ namespace RPGHelper.Client
 
         private void ImportExportBtn_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new ImportExportViewModel();
+            DataContext = new AboutViewModel();
         }
 
         private void LogoutBtn_Click(object sender, RoutedEventArgs e)
