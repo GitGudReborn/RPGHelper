@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Media;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -60,6 +61,9 @@ namespace RPGHelper.Client.Views
 
             InboxListView.ItemsSource = _messageService.GetReceivedMessages(AuthenticationService.GetCurrentUser().Id);
             OutboxListView.ItemsSource = _messageService.GetSentMessages(AuthenticationService.GetCurrentUser().Id);
+
+
+            
         }
 
         private void OpenBtn_Click(object sender, RoutedEventArgs e)
@@ -238,6 +242,14 @@ namespace RPGHelper.Client.Views
             }
 
             if (emailBox.Text == null || emailBox.Text.Length < 7 || emailBox.Text.Length > 100)
+            {
+                stsBarTextBlock.Text = "Email not valid!";
+                emailBox.Focus();
+                emailBox.SelectAll();
+                return;
+            }
+
+            if (!Regex.IsMatch(emailBox.Text, @"^([A-Za-z0-9]+)([\w\.\-]*)([A-Za-z0-9]+)@([[A-Za-z0-9]+(\-*[A-Za-z0-9])*)((\.([A-Za-z0-9]){2,3})+)$"))
             {
                 stsBarTextBlock.Text = "Email not valid!";
                 emailBox.Focus();

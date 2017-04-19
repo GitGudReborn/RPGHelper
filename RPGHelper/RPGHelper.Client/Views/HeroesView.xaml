@@ -128,10 +128,10 @@
                 </ListView.Resources>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Header="Gold" DisplayMemberBinding="{Binding Cost}"/>
-                        <GridViewColumn Header="Attack" DisplayMemberBinding="{Binding ItemStats.Attack}"/>
-                        <GridViewColumn Header="Defence" DisplayMemberBinding="{Binding ItemStats.Defence}"/>
+                        <GridViewColumn Header="Name" Width="140" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Gold" Width="90" DisplayMemberBinding="{Binding Cost}"/>
+                        <GridViewColumn Header="Attack" Width="100" DisplayMemberBinding="{Binding ItemStats.Attack}"/>
+                        <GridViewColumn Header="Defence" Width="100" DisplayMemberBinding="{Binding ItemStats.Defence}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
