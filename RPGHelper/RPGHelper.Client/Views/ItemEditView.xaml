@@ -1,0 +1,118 @@
+﻿<Window x:Class="RPGHelper.Client.Views.ItemEditView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RPGHelper.Client"
+        mc:Ignorable="d"
+        Title="ItemDetails" Height="450" Width="450" 
+        Icon="/RPGHelper.Client;component/Media/RPG_Icon.png" WindowStyle="None" 
+        AllowsTransparency="True" WindowStartupLocation="CenterScreen"
+        BorderBrush="Transparent" Background="Transparent" Foreground="Transparent">
+    <Window.Resources>
+
+    </Window.Resources>
+    <Grid MouseLeftButtonDown="Move" Margin="0,0,0,-30">
+        <Grid.Effect>
+            <DropShadowEffect/>
+        </Grid.Effect>
+        <Grid.Background>
+            <ImageBrush ImageSource="/RPGHelper.Client;component/Media/3DE_Parchment_2_bg_PB.png"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition />
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="120"/>
+        </Grid.RowDefinitions>
+        <Button Style="{StaticResource MyButtonStyle}" 
+               x:Name="Close" BorderBrush="Transparent" 
+               Click="Close_OnClick" HorizontalAlignment="Left"
+               Margin="90,10,0,0" VerticalAlignment="Top" 
+               Width="50" Height="50" RenderTransformOrigin="1.685,0.657"
+               Grid.Row="0" Grid.Column="2" >
+            <Button.Background>
+                <ImageBrush ImageSource="/RPGHelper.Client;component/Media/close.png"/>
+            </Button.Background>
+        </Button>
+
+        <Label Grid.Row="1" Grid.Column="0" 
+               Style="{StaticResource ColorText}" 
+               Content="Edit item: "
+               HorizontalAlignment="Right"/>
+        <TextBlock Text="{Binding Name}" Grid.Row="1" Grid.Column="1" 
+                   Style="{StaticResource TextBlockStyle}" 
+                   VerticalAlignment="Bottom" HorizontalAlignment="Left" />
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="0" >
+            <Label Content="Name" Style="{StaticResource ColorText}" FontSize="16" HorizontalAlignment="Right" />
+            <Label Content="Price" Style="{StaticResource ColorText}" FontSize="16" HorizontalAlignment="Right" />
+            <Label Content="Description" Style="{StaticResource ColorText}" FontSize="16" HorizontalAlignment="Right" />
+            <Label Content="Item Type" Style="{StaticResource ColorText}" FontSize="16" HorizontalAlignment="Right" />
+            <Label Content="Rarity" Style="{StaticResource ColorText}" FontSize="16" HorizontalAlignment="Right" />
+            <Label Content="Slot" Style="{StaticResource ColorText}" FontSize="16" HorizontalAlignment="Right" />
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+            <TextBox x:Name="Name" Text="{Binding Name}" Style="{StaticResource TextBoxStyle}"/>
+            <TextBox x:Name="Cost" Text="{Binding Cost}" Style="{StaticResource TextBoxStyle}" />
+            <TextBox x:Name="Description" Text="{Binding Description}" Style="{StaticResource TextBoxStyle}" />
+            <TextBox x:Name="ItemType" Text="{Binding ItemType}" Style="{StaticResource TextBoxStyle}" />
+            <TextBox x:Name="Rarity" Text="{Binding Rarity}" Style="{StaticResource TextBoxStyle}" />
+            <TextBox x:Name="Slot" Text="{Binding Slot}" Style="{StaticResource TextBoxStyle}" />
+        </StackPanel>
+        <Label Grid.Row="2" Grid.Column="1"
+               HorizontalContentAlignment="Center"
+               Style="{StaticResource ColorText}" 
+               Content="Item Statistics"
+               HorizontalAlignment="Center" Margin="31,180,39,34"
+               />
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,218,145,0" Grid.RowSpan="2" >
+            <Label Content="Attack" Style="{StaticResource ColorText}" HorizontalAlignment="Right" />
+            <Label Content="Defence" Style="{StaticResource ColorText}" HorizontalAlignment="Right" />
+        </StackPanel>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" Margin="10,218,0,0" Grid.RowSpan="3">
+            <TextBox x:Name="Attack" Text="{Binding ItemStats.Attack}" Style="{StaticResource TextBoxStyle}" Width="30" />
+            <TextBox x:Name="Defence" Text="{Binding ItemStats.Defence}" Style="{StaticResource TextBoxStyle}" Width="30" />
+        </StackPanel>
+        <StackPanel Grid.Column="2" HorizontalAlignment="Center" Grid.RowSpan="3" Grid.Row="0" Margin="10,30,58,177" MaxHeight="70">
+            <Label Style="{StaticResource ColorText}" Content="Select Item Type" Margin="0" Padding="0"/>
+            <RadioButton Content="Weapon" Checked="ItemTypeButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
+            <RadioButton Content="Armor" Checked="ItemTypeButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
+            <RadioButton Content="Consumable" Checked="ItemTypeButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
+            <RadioButton Content="Utility" Checked="ItemTypeButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" Margin="12,42,59,21">
+            <Label Style="{StaticResource ColorText}" Content="Select Rarity" Margin="0" RenderTransformOrigin="0.493,-2.446" Height="24"/>
+            <RadioButton Content="Common" Checked="RarityButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
+            <RadioButton Content="Uncommon" Checked="RarityButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
+            <RadioButton Content="Rare" Checked="RarityButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
+            <RadioButton Content="Mythical" Checked="RarityButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
+            <RadioButton Content="Legendary" Checked="RarityButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
+            <RadioButton Content="Ancient" Checked="RarityButton_OnChecked" Style="{StaticResource RadioButtonStyle}" Height="16" />
+            <RadioButton Content="Immortal" Checked="RarityButton_OnChecked" Style="{StaticResource RadioButtonStyle}" Height="16" />
+            <RadioButton Content="Arcana" Checked="RarityButton_OnChecked" Style="{StaticResource RadioButtonStyle}" Height="16" />
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" Margin="13,181,58,60" Grid.RowSpan="3">
+            <Label Style="{StaticResource ColorText}" Content="Select Slot" Margin="0" RenderTransformOrigin="0.493,-2.446" Height="28"/>
+            <RadioButton Content="Head" Checked="SlotButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
+            <RadioButton Content="Torso" Checked="SlotButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
+            <RadioButton Content="Hands" Checked="SlotButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
+            <RadioButton Content="Legs" Checked="SlotButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
+            <RadioButton Content="Feet" Checked="SlotButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
+            <RadioButton Content="Backpack" Checked="SlotButton_OnChecked" Style="{StaticResource RadioButtonStyle}" Height="16" />
+            <RadioButton Content="Weapon" Checked="SlotButton_OnChecked" Style="{StaticResource RadioButtonStyle}" Height="16" />
+        </StackPanel>
+        <Button x:Name="Button" Content="Save Changes" Foreground="#BF0000" FontFamily="/Media/#UnifrakturCook" FontSize="18" Style="{StaticResource MyButtonStyle}" Grid.Column="1" HorizontalAlignment="Left" Margin="29,8,0,0" Grid.Row="4" VerticalAlignment="Top" Width="111" Height="57" Click="SaveChanges_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/RPGHelper.Client;component/Media/swirl-red-clip-art.png"/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>
+    

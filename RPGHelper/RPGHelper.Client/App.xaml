@@ -57,8 +57,13 @@
             <Setter Property="FontSize" Value="15" />
             <Setter Property="Foreground" Value="LightSlateGray"/>
             <Setter Property="FontFamily" Value="/Media/#UnifrakturCook" />
-            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Margin" Value="4"/>
             <Setter Property="Width" Value="150" />
+        </Style>
+        <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="/Media/#Spirax" />
         </Style>
     </Application.Resources>
 </Application>
