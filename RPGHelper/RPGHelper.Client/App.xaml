@@ -65,5 +65,12 @@
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontFamily" Value="/Media/#Spirax" />
         </Style>
+        <Style x:Key="PasswordBoxStyle" TargetType="PasswordBox">
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="Foreground" Value="LightSlateGray"/>
+            <Setter Property="FontFamily" Value="/Media/#UnifrakturCook" />
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="Width" Value="150" />
+        </Style>
     </Application.Resources>
 </Application>

@@ -42,15 +42,15 @@
                 </Grid.RowDefinitions>
 
                 <Label Padding="0" Grid.Row="0" Foreground="WhiteSmoke" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">Username</Label>
-                <TextBox Name="usernameBox" FontSize="15"  Grid.Row="1" PreviewKeyDown="UsernameAndPasswordBox_KeyDown"/>
+                <TextBox Name="usernameBox" FontSize="15" Style="{StaticResource TextBoxStyle}" Grid.Row="1" PreviewKeyDown="UsernameAndPasswordBox_KeyDown"/>
                 <Label Padding="0" Grid.Row="2" Foreground="WhiteSmoke" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">Password</Label>
-                <PasswordBox Name="passwordBox" FontSize="15"  Grid.Row="3" PreviewKeyDown="UsernameAndPasswordBox_KeyDown"/>
+                <PasswordBox Name="passwordBox" Style="{StaticResource PasswordBoxStyle}" Grid.Row="3" PreviewKeyDown="UsernameAndPasswordBox_KeyDown"/>
                 <Label Padding="0" Grid.Row="4" Foreground="WhiteSmoke" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">Repeat Password</Label>
-                <PasswordBox Name="repeatpasswordBox" FontSize="15"  Grid.Row="5" PreviewKeyDown="UsernameAndPasswordBox_KeyDown"/>
+                <PasswordBox Name="repeatpasswordBox" Style="{StaticResource PasswordBoxStyle}" Grid.Row="5" PreviewKeyDown="UsernameAndPasswordBox_KeyDown"/>
 
                 <Button Grid.Row="7" Margin="50,10,50,-10" Content="Register" Click="Register_Click"/>
                 <StatusBar Name="statusBar" HorizontalAlignment="Center" Height="23" Margin="0,4,0,0" Grid.Row="6" VerticalAlignment="Center" Width="213">
-                    <StatusBarItem HorizontalContentAlignment="Center">
+                    <StatusBarItem HorizontalContentAlignment="Center" Width="156">
                         <TextBlock Name="statusText" VerticalAlignment="Center" TextAlignment="Center"></TextBlock>
                     </StatusBarItem>
                 </StatusBar>

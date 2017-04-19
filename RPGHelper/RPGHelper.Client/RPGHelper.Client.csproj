@@ -194,6 +194,7 @@
     <Resource Include="Media\removeFriendIconSmall.png" />
     <Resource Include="Media\removeFriendIconSmallHover.png" />
     <Resource Include="Media\frame.png" />
+    <Resource Include="Media\gold-border.gif" />
     <Content Include="Media\Spirax-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

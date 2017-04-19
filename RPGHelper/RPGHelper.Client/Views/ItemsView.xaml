@@ -94,9 +94,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="Button1" Click="AddNewItem_OnClick" Content="Add New Item" Foreground="#BF0000" FontFamily="/Media/#UnifrakturCook" FontSize="20" Grid.Column="3" HorizontalAlignment="Left" Margin="99,0,-14,0" Grid.Row="2" Style="{StaticResource MyButtonStyle}" VerticalAlignment="Top" Width="156" Height="90">
+        <Button x:Name="Button1" Click="AddNewItem_OnClick" Content="Add New Item" Foreground="#ffffff" FontFamily="/Media/#UnifrakturCook" FontSize="20" Grid.Column="3" HorizontalAlignment="Left" Margin="85,10,0,0" Grid.Row="2" Style="{StaticResource MyButtonStyle}" VerticalAlignment="Top" Width="156" Height="73">
             <Button.Background>
-                <ImageBrush ImageSource="/RPGHelper.Client;component/Media/swirl-red-clip-art.png" />
+                <ImageBrush ImageSource="/RPGHelper.Client;component/Media/gold-border.gif" />
             </Button.Background>
         </Button>
 
