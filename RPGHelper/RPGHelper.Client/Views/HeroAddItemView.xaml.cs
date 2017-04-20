@@ -29,7 +29,7 @@ namespace RPGHelper.Client.Views
             InitializeComponent();
 
             this.currentHero = currentHero;
-
+            HeroNameBox.Text = currentHero.Name;
             ItemsSourceLoad();
         }
 
@@ -73,6 +73,7 @@ namespace RPGHelper.Client.Views
             ItemsBox.Text = string.Empty;
 
             stsBarTextBlock.Text = "Canceled, all clear!";
+            this.Close();
         }
     }
 }

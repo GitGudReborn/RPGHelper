@@ -112,5 +112,28 @@ namespace RPGHelper.Client.Views
             heroAddItem.Show();
             LoadData();
         }
+
+        private void HeroRemoveOwnedItem_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            Item currentItem = button.DataContext as Item;
+            int itemId = currentItem.Id;
+            var currentHeroId = (HeroesList.SelectedItem as Hero).Id;
+
+            using (var context = new RPGHelperContext())
+            {
+                var hero = context.Heroes.FirstOrDefault(h => h.Id == currentHeroId);
+
+                var item = context.Items.FirstOrDefault(i => i.Id == itemId);
+
+                if (hero != null)
+                {
+                    hero.Items.Remove(item);
+                    context.SaveChanges();
+                }
+
+                LoadData();
+            }
+        }
     }
 }

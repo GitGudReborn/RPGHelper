@@ -25,7 +25,7 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Column="0" Margin="0,2,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <TextBox Name="HeroNameBox" Grid.Column="1" Grid.Row="0" Margin="0,2,0,0" TextWrapping="Wrap" Text="Hero Name" VerticalAlignment="Top" HorizontalContentAlignment="Center" />
+        <TextBlock Name="HeroNameBox" Grid.Column="1" Grid.Row="0" Margin="0,2,0,0" TextWrapping="Wrap" VerticalAlignment="Center" />
 
         <ComboBox x:Name="ItemsBox" Text="Select Item"  HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="150" Grid.Column="1" Margin="39,10,76,9" Grid.Row="1">
             <ComboBox.ItemTemplate>
