@@ -70,7 +70,7 @@
                HorizontalContentAlignment="Center"
                Style="{StaticResource ColorText}" 
                Content="Item Statistics"
-               HorizontalAlignment="Center" Margin="31,180,39,34"
+               HorizontalAlignment="Center" Margin="48,201,22,13"
                />
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,218,145,0" Grid.RowSpan="2" >
             <Label Content="Attack" Style="{StaticResource ColorText}" HorizontalAlignment="Right" />
@@ -80,7 +80,7 @@
             <TextBox x:Name="Attack" Text="{Binding ItemStats.Attack}" Style="{StaticResource TextBoxStyle}" Width="30" />
             <TextBox x:Name="Defence" Text="{Binding ItemStats.Defence}" Style="{StaticResource TextBoxStyle}" Width="30" />
         </StackPanel>
-        <StackPanel Grid.Column="2" HorizontalAlignment="Center" Grid.RowSpan="3" Grid.Row="0" Margin="10,30,58,177" MaxHeight="70">
+        <StackPanel Grid.Column="2" HorizontalAlignment="Center" Grid.RowSpan="3" Grid.Row="0" Margin="10,30,58,177" MaxHeight="80">
             <Label Style="{StaticResource ColorText}" Content="Select Item Type" Margin="0" Padding="0"/>
             <RadioButton Content="Weapon" Checked="ItemTypeButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
             <RadioButton Content="Armor" Checked="ItemTypeButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />

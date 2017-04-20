@@ -67,7 +67,7 @@
                HorizontalContentAlignment="Center"
                Style="{StaticResource ColorText}" 
                Content="Item Statistics"
-               HorizontalAlignment="Center" Margin="31,180,39,34"
+               HorizontalAlignment="Center" Margin="29,201,41,13"
                />
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,218,145,0" Grid.RowSpan="2" >
             <Label Content="Attack" Style="{StaticResource ColorText}" HorizontalAlignment="Right" />
@@ -77,14 +77,14 @@
             <TextBox x:Name="Attack" Text="0" Style="{StaticResource TextBoxStyle}" Width="30" />
             <TextBox x:Name="Defence" Text="0" Style="{StaticResource TextBoxStyle}" Width="30" />
         </StackPanel>
-        <StackPanel Grid.Column="2" HorizontalAlignment="Center" Grid.RowSpan="3" Grid.Row="0" Margin="10,30,58,177" MaxHeight="70">
+        <StackPanel Grid.Column="2" HorizontalAlignment="Center" Grid.RowSpan="3" Grid.Row="0" Margin="10,28,59,179" MaxHeight="80">
             <Label Style="{StaticResource ColorText}" Content="Select Item Type" Margin="0" Padding="0"/>
             <RadioButton Content="Weapon" Checked="ItemTypeButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
             <RadioButton Content="Armor" Checked="ItemTypeButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
             <RadioButton Content="Consumable" Checked="ItemTypeButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
-            <RadioButton Content="Utility" Checked="ItemTypeButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
+            <RadioButton Content="Utility" Checked="ItemTypeButton_OnChecked" Style="{StaticResource RadioButtonStyle}"  />
         </StackPanel>
-        <StackPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" Margin="12,42,59,21">
+        <StackPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" Margin="13,44,61,19">
             <Label Style="{StaticResource ColorText}" Content="Select Rarity" Margin="0" RenderTransformOrigin="0.493,-2.446" Height="24"/>
             <RadioButton Content="Common" Checked="RarityButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
             <RadioButton Content="Uncommon" Checked="RarityButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
@@ -95,7 +95,7 @@
             <RadioButton Content="Immortal" Checked="RarityButton_OnChecked" Style="{StaticResource RadioButtonStyle}" Height="16" />
             <RadioButton Content="Arcana" Checked="RarityButton_OnChecked" Style="{StaticResource RadioButtonStyle}" Height="16" />
         </StackPanel>
-        <StackPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" Margin="13,181,58,60" Grid.RowSpan="3">
+        <StackPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" Margin="13,201,71,40" Grid.RowSpan="3">
             <Label Style="{StaticResource ColorText}" Content="Select Slot" Margin="0" RenderTransformOrigin="0.493,-2.446" Height="28"/>
             <RadioButton Content="Head" Checked="SlotButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
             <RadioButton Content="Torso" Checked="SlotButton_OnChecked" Style="{StaticResource RadioButtonStyle}" />
