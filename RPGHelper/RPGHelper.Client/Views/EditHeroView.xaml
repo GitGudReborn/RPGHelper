@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="EditHeroView" Height="400" Width="450" >
     <Grid >
+        <Grid.Background>
+            <ImageBrush ImageSource="/RPGHelper.Client;component/Media/images.jpg"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
@@ -15,7 +18,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2.2*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -23,24 +26,24 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="0" Margin="0,2,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <TextBox Name="HeroNameBox" Grid.Column="1" Grid.Row="0" Margin="0,2,0,0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" HorizontalContentAlignment="Center" />
+        <TextBlock Grid.Column="0" Style="{StaticResource TextBlockStyle}" Foreground="AntiqueWhite" Margin="0,2,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <TextBox Name="HeroNameBox" Style="{StaticResource TextBoxStyle}" Text="{Binding Name}" Grid.Column="1" Grid.Row="0" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalContentAlignment="Center" Width="Auto"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="1" Margin="0,2,0,0" TextWrapping="Wrap" Text="Gold:" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <TextBox Name="GoldBox" Grid.Column="1" Grid.Row="1" Margin="0,2,0,0" TextWrapping="Wrap" Text="{Binding Gold}" VerticalAlignment="Top" HorizontalContentAlignment="Center" />
+        <TextBlock Grid.Column="0" Style="{StaticResource TextBlockStyle}" Foreground="AntiqueWhite" Grid.Row="1" Margin="0,2,0,0" TextWrapping="Wrap" Text="Gold:" VerticalAlignment="Center" HorizontalAlignment="Center"  />
+        <TextBox Name="GoldBox"  Style="{StaticResource TextBoxStyle}" Width="Auto" Grid.Column="1" Grid.Row="1" Margin="0,9,0,0" TextWrapping="Wrap" Text="{Binding Gold}" VerticalAlignment="Center" HorizontalContentAlignment="Center" />
 
-        <TextBlock Grid.Column="0" Grid.Row="2" Margin="0,2,0,0" TextWrapping="Wrap" Text="Hp:" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <TextBox Name="HpBox"  Grid.Column="1" Grid.Row="2" Margin="0,2,0,0" TextWrapping="Wrap" Text="{Binding HeroStats.Hp}" VerticalAlignment="Top" HorizontalContentAlignment="Center" />
+        <TextBlock Grid.Column="0" Style="{StaticResource TextBlockStyle}" Foreground="AntiqueWhite" Grid.Row="2" Margin="0,2,0,0" TextWrapping="Wrap" Text="Hp:" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <TextBox Name="HpBox" Style="{StaticResource TextBoxStyle}" Width="Auto" Grid.Column="1" Grid.Row="2" Margin="0,10,0,0" TextWrapping="Wrap" Text="{Binding HeroStats.Hp}" VerticalAlignment="Center" HorizontalContentAlignment="Center" />
 
-        <TextBlock Grid.Column="0" Grid.Row="3" Margin="0,2,0,0" TextWrapping="Wrap" Text="Mana:" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <TextBox Name="ManaBox"  Grid.Column="1" Grid.Row="3" Margin="0,2,0,0" TextWrapping="Wrap" Text="{Binding HeroStats.Mana}" VerticalAlignment="Top" HorizontalContentAlignment="Center" />
+        <TextBlock Grid.Column="0" Style="{StaticResource TextBlockStyle}" Foreground="AntiqueWhite" Grid.Row="3" Margin="0,2,0,0" TextWrapping="Wrap" Text="Mana:" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <TextBox Name="ManaBox" Style="{StaticResource TextBoxStyle}" Width="Auto" Grid.Column="1" Grid.Row="3" Margin="0,9,0,0" TextWrapping="Wrap" Text="{Binding HeroStats.Mana}" VerticalAlignment="Center" HorizontalContentAlignment="Center" />
 
-        <TextBlock Grid.Column="0" Grid.Row="4" Margin="0,2,0,0" TextWrapping="Wrap" Text="Defence:" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <TextBox Name="DefenceBox"  Grid.Column="1" Grid.Row="4" Margin="0,2,0,0" TextWrapping="Wrap" Text="{Binding HeroStats.Defence}" VerticalAlignment="Top" HorizontalContentAlignment="Center" />
+        <TextBlock Grid.Column="0" Style="{StaticResource TextBlockStyle}" Foreground="AntiqueWhite" Grid.Row="4" Margin="0,2,0,0" TextWrapping="Wrap" Text="Defence:" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <TextBox Name="DefenceBox" Style="{StaticResource TextBoxStyle}" Width="Auto" Grid.Column="1" Grid.Row="4" Margin="0,8,0,0" TextWrapping="Wrap" Text="{Binding HeroStats.Defence}" VerticalAlignment="Center" HorizontalContentAlignment="Center" />
 
-        <TextBlock Grid.Column="0" Grid.Row="5" Margin="0,2,0,0" TextWrapping="Wrap" Text="AttackPower:" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <TextBox Name="AttackPowerBox"  Grid.Column="1" Grid.Row="5" Margin="0,2,0,0" TextWrapping="Wrap" Text="{Binding HeroStats.AttackPower}" VerticalAlignment="Top" HorizontalContentAlignment="Center" />
-
+        <TextBlock Grid.Column="0" Style="{StaticResource TextBlockStyle}" Foreground="AntiqueWhite" Grid.Row="5" Margin="0,2,0,0" TextWrapping="Wrap" Text="Attack Power:" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <TextBox Name="AttackPowerBox" Style="{StaticResource TextBoxStyle}" Width="Auto" Grid.Column="1" Grid.Row="5" Margin="0,8,0,0" TextWrapping="Wrap" Text="{Binding HeroStats.AttackPower}" VerticalAlignment="Center" HorizontalContentAlignment="Center" />
+        
         <Grid Grid.Row="7" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*"/>
@@ -54,13 +57,34 @@
             </Grid.ColumnDefinitions>
             <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,2,0,2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <StatusBar HorizontalContentAlignment="Stretch">
-                    <StatusBarItem HorizontalAlignment="Center">
-                        <TextBlock Name="stsBarTextBlock" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <StatusBarItem HorizontalAlignment="Center" Width="Auto">
+                        <TextBlock x:Name="stsBarTextBlock" Style="{StaticResource TextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Margin="5,0" Width="Auto" />
                     </StatusBarItem>
                 </StatusBar>
             </DockPanel>
-            <Button Grid.Row="1" Grid.Column="0" Content="Save" Click="SaveHero_Button"/>
-            <Button Grid.Row="1" Grid.Column="2" Content="Cancel" Click="Cancel_Button"/>
+            <Button Grid.Row="1" Grid.Column="0" 
+                    Content="Save" Click="SaveHero_Button" 
+                    Style="{StaticResource MyButtonStyle}"
+                    FontFamily="/RPGHelper.Client;component/Media/#UnifrakturCook"
+                    Foreground="WhiteSmoke" FontSize="18"
+                    VerticalAlignment="Bottom"
+                     Width="100">
+                <Button.Background>
+                    <ImageBrush ImageSource="/RPGHelper.Client;component/Media/gold-border.gif"></ImageBrush>
+                </Button.Background>
+            </Button>
+            <Button Grid.Row="1" Grid.Column="2" 
+                    Content="Cancel" 
+                    Style="{StaticResource MyButtonStyle}"
+                    FontFamily="/RPGHelper.Client;component/Media/#UnifrakturCook"
+                    Foreground="WhiteSmoke" FontSize="18"
+                    Click="Cancel_Button"
+                    VerticalAlignment="Bottom"
+                    Width="100">
+                <Button.Background>
+                    <ImageBrush ImageSource="/RPGHelper.Client;component/Media/gold-border.gif"></ImageBrush>
+                </Button.Background>
+            </Button>
         </Grid>
     </Grid>
 </Window>

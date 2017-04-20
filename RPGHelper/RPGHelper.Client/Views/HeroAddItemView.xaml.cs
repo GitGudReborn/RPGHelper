@@ -29,7 +29,7 @@ namespace RPGHelper.Client.Views
             InitializeComponent();
 
             this.currentHero = currentHero;
-            HeroNameBox.Text = currentHero.Name;
+            HeroNameBox.Text += currentHero.Name;
             ItemsSourceLoad();
         }
 
