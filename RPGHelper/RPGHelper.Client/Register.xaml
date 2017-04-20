@@ -41,11 +41,11 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <Label Padding="0" Grid.Row="0" Style="{StaticResource ColorText}" Foreground="WhiteSmoke" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">Username</Label>
+                <Label Padding="0" Grid.Row="0" FontSize="15" FontStyle="Normal" Style="{StaticResource ColorText}" Foreground="WhiteSmoke" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">Username</Label>
                 <TextBox Name="usernameBox" Width="205" FontSize="15" Style="{StaticResource TextBoxStyle}" Grid.Row="1" HorizontalContentAlignment="Center" PreviewKeyDown="UsernameAndPasswordBox_KeyDown"/>
-                <Label Padding="0" Grid.Row="2" Style="{StaticResource ColorText}" Foreground="WhiteSmoke" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">Password</Label>
+                <Label Padding="0" Grid.Row="2"  FontStyle="Normal"  FontSize="15"  Style="{StaticResource ColorText}" Foreground="WhiteSmoke" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">Password</Label>
                 <PasswordBox Name="passwordBox" Width="205" Style="{StaticResource PasswordBoxStyle}" Grid.Row="3" HorizontalContentAlignment="Center" PreviewKeyDown="UsernameAndPasswordBox_KeyDown"/>
-                <Label Padding="0" Grid.Row="4" Style="{StaticResource ColorText}" Foreground="WhiteSmoke" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">Repeat Password</Label>
+                <Label Padding="0" Grid.Row="4" FontStyle="Normal"  FontSize="15"  Style="{StaticResource ColorText}" Foreground="WhiteSmoke" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">Repeat Password</Label>
                 <PasswordBox Name="repeatpasswordBox" Width="205" Style="{StaticResource PasswordBoxStyle}" Grid.Row="5" HorizontalContentAlignment="Center" PreviewKeyDown="UsernameAndPasswordBox_KeyDown"/>
 
                 <Button Grid.Row="7" Margin="56,10,44,-13" Height="30" FontSize="18"  Content="Register" Click="Register_Click" Style="{StaticResource MyButtonStyle}" FontFamily="Media/#UnifrakturCook" Foreground="WhiteSmoke">
