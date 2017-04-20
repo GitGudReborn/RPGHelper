@@ -13,7 +13,6 @@ namespace RPGHelper.Models
         public Hero()
         {
             this.Items = new List<Item>();
-            this.Minions = new List<Minion>();
         }
 
         [Key]
@@ -27,8 +26,6 @@ namespace RPGHelper.Models
         public decimal Gold { get; set; }
 
         public virtual ICollection<Item> Items { get; set; }
-
-        public virtual ICollection<Minion> Minions { get; set; }
 
         [Required]
         public virtual HeroStats HeroStats { get; set; }

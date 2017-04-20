@@ -190,15 +190,6 @@ namespace RPGHelper.Data
             seedItem1.ItemStats = itemStats1;
             seedItem2.ItemStats = itemStats2;
             seedItem3.ItemStats = itemStats3;
-            
-            Minion seedMinion1 = new Minion
-            {
-                Name = "Doge",
-                Hp = 10000,
-                Attack = 90,
-                Defence = 40
-            };
-
 
             seedHero1.Items.Add(seedItem1);
             seedHero1.Items.Add(seedItem2);
@@ -218,14 +209,6 @@ namespace RPGHelper.Data
             seedHero6.Items.Add(seedItem1);
             seedHero6.Items.Add(seedItem3);
 
-
-            seedHero1.Minions.Add(seedMinion1);
-            seedHero2.Minions.Add(seedMinion1);
-            seedHero3.Minions.Add(seedMinion1);
-            seedHero4.Minions.Add(seedMinion1);
-            seedHero5.Minions.Add(seedMinion1);
-            seedHero6.Minions.Add(seedMinion1);
-
             seedUser1.Heroes.Add(seedHero1);
             seedUser1.Heroes.Add(seedHero2);
             seedUser2.Heroes.Add(seedHero3);
@@ -243,8 +226,6 @@ namespace RPGHelper.Data
             context.Items.Add(seedItem1);
             context.Items.Add(seedItem2);
             context.Items.Add(seedItem3);
-
-            context.Minions.Add(seedMinion1);
 
 
             seedUser1.Friends.Add(seedUser2);

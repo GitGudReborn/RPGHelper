@@ -24,7 +24,6 @@ namespace RPGHelper.Data
         public virtual DbSet<HeroStats> HeroStatistics { get; set; }
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<ItemStats> ItemStatistics { get; set; }
-        public virtual DbSet<Minion> Minions { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -36,16 +35,6 @@ namespace RPGHelper.Data
             modelBuilder.Entity<Item>()
                 .HasRequired(i => i.ItemStats)
                 .WithRequiredPrincipal(i => i.Item);
-            
-            modelBuilder.Entity<Hero>()
-                .HasMany(h => h.Minions)
-                .WithMany(m => m.Owners)
-                .Map(m =>
-                {
-                    m.MapLeftKey("HeroId");
-                    m.MapRightKey("MinionId");
-                    m.ToTable("HeroesMinions");
-                });
 
             modelBuilder.Entity<Hero>()
                 .HasMany(h => h.Items)
@@ -78,10 +67,4 @@ namespace RPGHelper.Data
                 .WillCascadeOnDelete(false);
         }
     }
-
-    //public class MyEntity
-    //{
-    //    public int Id { get; set; }
-    //    public string Name { get; set; }
-    //}
 }

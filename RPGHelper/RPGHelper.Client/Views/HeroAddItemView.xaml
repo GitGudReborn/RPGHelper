@@ -27,6 +27,7 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
+
         <TextBlock Name="HeroNameBox" Style="{StaticResource TextBlockStyle}" Foreground="AntiqueWhite" Grid.Column="1" Grid.Row="0" Margin="0,10,0,9" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Height="Auto" />
 
         <Label Style="{StaticResource ColorText}" Foreground="AntiqueWhite" FontSize="20" Grid.Row="2" HorizontalContentAlignment="Center" Grid.Column="1">Select Items from list below:</Label>
